@@ -13,3 +13,5 @@ For now this is just the admin wich works so go to the route :
 
 We will need to implement a true DB system.
 We will need to fix unshown datepicker in the admin edition of date although it works with django.contrib.admin but not with djadmin2.
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/julienkosinski/psychomino?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
