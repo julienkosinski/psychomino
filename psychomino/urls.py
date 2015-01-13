@@ -10,6 +10,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'psychomino.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    #url(r'^admin/', include(admin.site.urls)),
-    url(r'^admin/', include(djadmin2.default.urls)),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin2/', include(djadmin2.default.urls)),
 )

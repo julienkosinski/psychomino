@@ -1,5 +1,5 @@
 Django==1.7.2
--e git://github.com/pydanny/django-admin2.git#egg=django-admin2
+-e git://github.com/pydanny/django-admin2.git@develop#egg=django-admin2
 django-braces==1.4.0
 django-crispy-forms==1.4.0
 django-datetime-widget==0.9.3
