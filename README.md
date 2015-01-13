@@ -1,3 +1,5 @@
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/julienkosinski/psychomino?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Install the app :
 
 You may want to update your python in Ubuntu with [PyEnv](https://github.com/yyuu/pyenv). I use Python 3.4.2.
@@ -17,4 +19,4 @@ We will have to choose between the two.
 We will need to implement a true DB system.
 We will need to fix unshown datepicker in the admin edition of date although it works with django.contrib.admin but not with djadmin2.
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/julienkosinski/psychomino?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+Env Template base : [django-project-template](https://github.com/jpadilla/django-project-template)
