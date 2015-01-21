@@ -41,7 +41,6 @@ class Common(Configuration):
         'django_extensions',
 
         'lessons',
-        'elements',
     )
 
     INSTALLED_APPS += ('djadmin2.themes.djadmin2theme_default',)
