@@ -88,7 +88,7 @@ target/
 __pycache__/
 local_settings.py
 
-.env
+.env*
 # db.sqlite3
 # For the moment leaving the current db.sqlite3 in github because in production superuser will be regenerate with secured credentials but not in development.
 .idea
