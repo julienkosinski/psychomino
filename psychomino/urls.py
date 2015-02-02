@@ -11,4 +11,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin2/', include(djadmin2.default.urls)),
+    url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
 )
