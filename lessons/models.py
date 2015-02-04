@@ -10,7 +10,7 @@ class Lesson(models.Model):
         return self.lesson_title
 
 class Branch(models.Model):
-    branch_title = models.charField(max_length=200)
+    branch_title = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     modify_date = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name="Date de modification")
     branch_lesson = models.ForeignKey('Lesson')
