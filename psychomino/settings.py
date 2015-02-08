@@ -22,7 +22,7 @@ class Common(Configuration):
 
     TEMPLATE_DEBUG = values.BooleanValue(DEBUG)
 
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = [".herokuapp.com"]
 
     # Application definition
     INSTALLED_APPS = (
