@@ -11,8 +11,9 @@ import dotenv
 try:
     dotenv.read_dotenv(
         os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
-except:
-    pass
+except Exception as e:
+    print(e)
+
 
 ENVIRONMENT = os.getenv('ENVIRONMENT')
 
@@ -26,6 +27,6 @@ else:
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'psychomino.settings')
 os.environ.setdefault('DJANGO_CONFIGURATION', settings.title())
 
-from django.core.wsgi import get_wsgi_application
+from configurations.wsgi import get_wsgi_application
 
 application = get_wsgi_application()
