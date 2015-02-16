@@ -11,7 +11,7 @@ psycopg2==2.5.4
 Werkzeug==0.10.1
 
 
--e git://github.com/pydanny/django-admin2.git@develop#egg=django-admin2
+# -e git://github.com/pydanny/django-admin2.git@develop#egg=django-admin2
 django-braces==1.4.0
 django-crispy-forms==1.4.0
 django-datetime-widget==0.9.3
