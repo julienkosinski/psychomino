@@ -22,7 +22,7 @@ class Common(Configuration):
 
     TEMPLATE_DEBUG = values.BooleanValue(DEBUG)
 
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = [".herokuapp.com"]
 
     # Application definition
     INSTALLED_APPS = (
@@ -81,8 +81,15 @@ class Common(Configuration):
 
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/1.7/howto/static-files/
-    STATIC_URL = '/static/'
+    PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+    PROJECT_DIR = os.path.join(PROJECT_ROOT,'../psychomino')
 
+    STATIC_URL = '/static/'
+    
+    STATIC_ROOT = os.path.join(PROJECT_ROOT,'staticfiles/')
+    STATICFILES_DIRS = (
+        os.path.join(PROJECT_DIR,'static/'),
+    )
 
 class Development(Common):
     """
