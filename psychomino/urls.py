@@ -2,8 +2,6 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 
-import djadmin2
-
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'psychomino.views.home', name='home'),

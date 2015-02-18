@@ -18,6 +18,6 @@ django-datetime-widget==0.9.3
 django-extra-views==0.6.5
 django-filter==0.9.1
 django-floppyforms==1.2.0
-djangorestframework==2.4.4
+djangorestframework==3.0
 pytz==2014.7
 pillow==2.7.0

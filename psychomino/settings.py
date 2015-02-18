@@ -27,7 +27,6 @@ class Common(Configuration):
     # Application definition
     INSTALLED_APPS = (
         'django.contrib.admin',
-        'djadmin2',
         'rest_framework', # for the browsable API templates
         'floppyforms', # For HTML5 form fields
         'crispy_forms', # Required for the default theme's layout
@@ -42,9 +41,6 @@ class Common(Configuration):
 
         'lessons',
     )
-
-    INSTALLED_APPS += ('djadmin2.themes.djadmin2theme_default',)
-    ADMIN2_THEME_DIRECTORY = "djadmin2theme_default/"
 
     MIDDLEWARE_CLASSES = (
         'djangosecure.middleware.SecurityMiddleware',
