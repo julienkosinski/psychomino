@@ -3,7 +3,7 @@ from django.db import models
 
 class Lesson(models.Model):
     lesson_title = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de création")
     modify_date = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name="Date de modification")
 
     def __str__(self):
@@ -11,9 +11,9 @@ class Lesson(models.Model):
 
 class Branch(models.Model):
     branch_title = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de création")
     modify_date = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name="Date de modification")
-    branch_lesson = models.ForeignKey('Lesson')
+    branch_lesson = models.ForeignKey('Lesson', related_name='branches')
 
     def __str__(self):
         return self.branch_title
@@ -28,7 +28,7 @@ class Element(models.Model):
     element_type = models.CharField(max_length=4, choices=ELEMENT_TYPE_CHOICE)
     pub_date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de création")
     modify_date = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name="Date de modification")
-    element_branch = models.ForeignKey('Branch')
+    element_branch = models.ForeignKey('Branch', related_name='elements')
 
     def __str__(self):
         return self.element_content
