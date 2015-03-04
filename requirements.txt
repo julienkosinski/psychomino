@@ -9,6 +9,7 @@ gunicorn==19.2.1
 newrelic==2.42.0.35
 # psycopg2==2.5.4
 Werkzeug==0.10.1
+django-imagekit
 
 
 # -e git://github.com/pydanny/django-admin2.git@develop#egg=django-admin2

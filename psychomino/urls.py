@@ -3,7 +3,6 @@ from django.contrib import admin
 from rest_framework.routers import SimpleRouter
 from api.views import LessonViewSet, BranchViewSet, ElementViewSet
 
-router = SimpleRouter()
 router = SimpleRouter(trailing_slash=False)
 router.register(r'lessons', LessonViewSet, 'lessons')
 router.register(r'branches', BranchViewSet, 'branches')

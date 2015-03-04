@@ -4,16 +4,19 @@ from lessons.models import Lesson, Branch, Element
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.renderers import JSONRenderer,TemplateHTMLRenderer
+from rest_framework.decorators import detail_route
 
 class LessonViewSet(viewsets.ModelViewSet):
 
 
     serializer_class = LessonSerializer
+    renderer_classes = (JSONRenderer, TemplateHTMLRenderer)
 
     def retrieve(self, request, pk=None):
         queryset = Lesson.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = LessonSerializer(user)
+        lessons = get_object_or_404(queryset, pk=pk)
+        serializer = LessonSerializer(lessons)
         return Response(serializer.data)
 
 
@@ -40,6 +43,12 @@ class LessonViewSet(viewsets.ModelViewSet):
         lesson = get_object_or_404(queryset, pk=pk)
         lesson.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    @detail_route(methods=['get'])
+    def preview(self, request, pk=None):
+        queryset = Lesson.objects.all()
+        lesson = get_object_or_404(queryset, pk=pk)
+        return Response({'lesson': lesson}, template_name='lessons/previews.html')
 
 class BranchViewSet(viewsets.ModelViewSet):
 
