@@ -10,7 +10,7 @@ router.register(r'elements', ElementViewSet, 'elements')
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'psychomino.views.home', name='home'),
+    url(r'^$', 'psychomino.views.home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
