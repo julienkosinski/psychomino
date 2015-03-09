@@ -17,9 +17,8 @@ class LessonViewSet(viewsets.ModelViewSet):
         queryset = Lesson.objects.all()
         lessons = get_object_or_404(queryset, pk=pk)
         serializer = LessonSerializer(lessons)
-        return Response(serializer.data)
-
-
+        return Response({'lesson': serializer.data}, template_name='lessons/previews.html')
+        
     def create(self, request):
         serializer = LessonSerializer(data=request.data)
         if serializer.is_valid():
@@ -43,12 +42,7 @@ class LessonViewSet(viewsets.ModelViewSet):
         lesson = get_object_or_404(queryset, pk=pk)
         lesson.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-    @detail_route(methods=['get'])
-    def preview(self, request, pk=None):
-        queryset = Lesson.objects.all()
-        lesson = get_object_or_404(queryset, pk=pk)
-        return Response({'lesson': lesson}, template_name='lessons/previews.html')
+        
 
 class BranchViewSet(viewsets.ModelViewSet):
 
