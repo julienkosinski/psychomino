@@ -19,14 +19,12 @@ class LessonViewSet(viewsets.ModelViewSet):
         serializer = LessonSerializer(lessons)
         return Response(serializer.data)
 
-
     def create(self, request):
         serializer = LessonSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
     def update(self, request, pk, format=None):
         queryset = Lesson.objects.all()
@@ -36,7 +34,6 @@ class LessonViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
     def destroy(self, request, pk, format=None):
         queryset = Lesson.objects.all()
@@ -48,7 +45,8 @@ class LessonViewSet(viewsets.ModelViewSet):
     def preview(self, request, pk=None):
         queryset = Lesson.objects.all()
         lesson = get_object_or_404(queryset, pk=pk)
-        return Response({'lesson': lesson}, template_name='lessons/previews.html')
+        serializer = LessonSerializer(lesson)
+        return Response(serializer.data, template_name='lessons/previews.html')
 
 class BranchViewSet(viewsets.ModelViewSet):
 
