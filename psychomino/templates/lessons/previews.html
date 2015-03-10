@@ -8,11 +8,11 @@
 {% block title %}Prévisualisation du cours{% endblock %}
 
 {% block content %}
-	{% for i,g,h,j in lesson.branches %}
-		{{lesson.branches}}
-		{{i}}
-		{{g}}
-		{{h}}
-		{{j}}
-	{% endfor %}
+{{lesson.lesson_title}}
+{% for branch in branches %}
+	{{branch.branch_title}}
+{% endfor %}
+{% for element in elements %}
+	{{element.element_content}}
+{% endfor %}
 {% endblock %}

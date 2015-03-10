@@ -17,8 +17,21 @@ class LessonViewSet(viewsets.ModelViewSet):
         queryset = Lesson.objects.all()
         lessons = get_object_or_404(queryset, pk=pk)
         serializer = LessonSerializer(lessons)
-        return Response({'lesson': serializer.data}, template_name='lessons/previews.html')
-        
+        if request.accepted_renderer.format == 'html':
+            lesson = serializer.data
+            branches = lesson['branches']
+            elements = list()
+            for branch in branches:
+                for (branch_key,branch_content) in branch.items():
+                    if branch_key == 'elements':
+                        for each_elements in branch_content:
+                            elements.append(each_elements)
+                    continue
+            lesson.pop('branches', None)
+            return Response({'lesson': lesson, 'branches': branches, 'elements': elements}, template_name='lessons/previews.html')
+        else:
+            return Response(serializer.data)
+
     def create(self, request):
         serializer = LessonSerializer(data=request.data)
         if serializer.is_valid():
