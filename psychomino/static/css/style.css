@@ -68,3 +68,16 @@ footer ul li{
     color: white;
     font-family: sans-serif;
 }
+.free-wall {
+    margin: 15px;
+}
+.cell {
+    cursor: move;
+}
+.cell .cover {
+    padding: 15px;
+}
+.handle {
+    border: 1px dotted orange;
+    padding: 4px;
+}
