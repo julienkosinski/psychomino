@@ -27,6 +27,12 @@ else:
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'psychomino.settings')
 os.environ.setdefault('DJANGO_CONFIGURATION', settings.title())
 
-from configurations.wsgi import get_wsgi_application
+from django.core.wsgi import get_wsgi_application
+
+if ENVIRONMENT == 'PRODUCTION' or 'STAGING':
+	from whitenoise.django import DjangoWhiteNoise
 
 application = get_wsgi_application()
+
+if ENVIRONMENT == 'PRODUCTION' or 'STAGING':
+	application = DjangoWhiteNoise(application)

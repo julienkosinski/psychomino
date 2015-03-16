@@ -124,6 +124,8 @@ class Staging(Common):
         ('HTTP_X_FORWARDED_PROTO', 'https')
     )
 
+    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 
 class Production(Staging):
     """
