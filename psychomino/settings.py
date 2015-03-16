@@ -30,6 +30,7 @@ class Common(Configuration):
         'rest_framework', # for the browsable API templates
         'floppyforms', # For HTML5 form fields
         'crispy_forms', # Required for the default theme's layout
+        'imagekit',
     
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -39,7 +40,8 @@ class Common(Configuration):
 
         'django_extensions',
 
-        'lessons',
+        'psychomino',
+        'lessons'
     )
 
     MIDDLEWARE_CLASSES = (

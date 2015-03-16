@@ -52,9 +52,9 @@ brew install python3
  
 [Python 3.4.2 for Windows](https://www.python.org/ftp/python/3.4.2/python-3.4.2.msi)
 
-## To update your local requirments
+## To update your local requirements
 ```
-$ pip3 install -r requirments.txt
+$ pip3 install -r requirements.txt
 ```
 
 ## Start the development server

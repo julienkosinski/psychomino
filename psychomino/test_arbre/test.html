@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Tree Example</title>
+
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" href="js/jquery.ui.plupload.css" type="text/css" />
+    <style>
+
+    .node circle {
+      fill: #fff;
+      stroke: steelblue;
+      stroke-width: 3px;
+    }
+
+    .node text { font: 12px sans-serif; }
+
+    .link {
+      fill: none;
+      stroke: #ccc;
+      stroke-width: 2px;
+    }
+
+    </style>
+
+  </head>
+  <body>
+
+<!-- Créer l'arbre avec un sujet -->
+  <form>
+    sujet<input type="text" name="sujet" />
+    <input type="submit" class="submit" value="Submit">
+    <p class="error"></p>
+  </form>
+
+<!-- TODO Upload IMAGE -> Marche pas -->
+<!-- <div id="container">
+  <div id="filelist">
+    <div class="img"><img src="default-upload.gif" alt="" /></div>
+  </div>
+  <a id="pickfiles" href="javascript:;">Parcourir</a>
+</div> -->
+
+<!-- JS -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+<!-- Plupload -->
+<script type="text/javascript" src="js/plupload.full.min.js"></script>
+<script type="text/javascript" src="js/jquery.ui.plupload.js"></script>
+<script type="text/javascript" src="js/fr.js"></script>
+
+<script>
+
+jQuery(document).ready(function($){
+
+// Structure de l'arbre  json
+var treeData = [
+  {
+    "name": "",
+    "parent": "null",
+    "value": 10,
+    "type": "black",
+    "level": "red",
+
+    // "children": [
+    //   {
+    //     "name": "Sujet 1",
+    //     "parent": "Racine Sujet",
+    //     "value": 5,
+    //     "type": "grey",
+    //     "level": "blue",
+    //     "children": [
+    //       {
+    //         "parent": "Sujet 1",
+    //         "value": 5,
+    //         "type": "steelblue",
+    //         "icon": "image.jpg",
+    //         "level": "red"
+    //       },
+    //       {
+    //         "name": "Elément 2",
+    //         "parent": "Sujet 2",
+    //         "value": 18,
+    //         "type": "steelblue",
+    //         "level": "red"
+    //       }
+    //     ]
+    //   },
+    //   {
+    //     "name": "Sujet 2",
+    //     "parent": "Racine Sujet",
+    //     "value": 10,
+    //     "type": "grey",
+    //     "level": "blue"
+    //   }
+    // ]
+  }
+];
+
+// Get data
+console.log(treeData);
+
+// ************** Generate the tree diagram  *****************
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+    width = 960 - margin.right - margin.left,
+    height = 500 - margin.top - margin.bottom;
+
+var i = 0;
+
+var tree = d3.layout.tree()
+    .size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+    .projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.right + margin.left)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+
+// /!\ Construit l'arbre /!\
+// update(root);
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+      links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 180; });
+
+  // Declare the nodes…
+  var node = svg.selectAll("g.node")
+      .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter the nodes.
+  var nodeEnter = node.enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) {
+          return "translate(" + d.y + "," + d.x + ")"; });
+
+  //Position + Taille image
+  nodeEnter.append("image")
+      .attr("xlink:href", function(d) { return d.icon; })
+      .attr("x", "-5px")
+      .attr("y", "-60px")
+      .attr("width", "120px")
+      .attr("height", "120px");
+
+//FORM CUSTOM TODO : ajout d'un champs form dans le svg ?
+  // nodeEnter.append("input")
+  //     .attr("width", "100px")
+  //     .attr("height", "20px");
+
+  nodeEnter.append("text")
+      .attr("x", function(d) {
+          return d.children || d._children ?
+          (15) * -1 : + 15 })
+      .attr("dy", ".35em")
+      .attr("text-anchor", function(d) {
+          return d.children || d._children ? "end" : "start"; })
+      .text(function(d) { return d.name; })
+      .style("fill-opacity", 1);
+
+  // Declare the links…
+  var link = svg.selectAll("path.link")
+      .data(links, function(d) { return d.target.id; });
+
+  // Enter the links.
+  link.enter().insert("path", "g")
+      .attr("class", "link")
+      .style("stroke", function(d) { return d.target.level; })
+      .attr("d", diagonal);
+
+}
+root = treeData[0];
+
+// TODO Intégrer le form dans le graph
+// Create Tree on submit form
+$('.submit').closest('form').submit(function(e){
+  e.preventDefault();
+  if($('input[name=sujet]').val() == ''){
+    $(this).find('.error').text("remplir les champs");
+  }
+  else{
+    sujet = $('input[name=sujet]').val();
+    treeData[0].name = sujet;
+    update(root);
+  }
+});
+
+// TODO Upload picture with plupload
+// var uploader = new plupload.Uploader({
+//   // General settings
+//   browse_button : 'pickfiles',
+//   url : 'upload.php',
+//   unique_names : true,
+
+//   init : {
+//     QueueChanged: function(up) {
+//       up.start();
+//     },
+//     FileUploaded: function(up, file, info) {
+//       $('#filelist .img img').attr('src','temp/'+file.target_name);
+//     }
+//   }
+// });
+//
+//uploader.init();
+
+});
+
+</script>
+
+  </body>
+</html>
