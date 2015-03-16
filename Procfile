@@ -1,1 +1,1 @@
-web: newrelic-admin run-program gunicorn -b "0.0.0.0:$PORT" -w 4 psychomino.wsgi
+web: gunicorn psychomino.wsgi --log-file -

@@ -77,16 +77,13 @@ class Common(Configuration):
 
     USE_TZ = True
 
-    # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/1.7/howto/static-files/
-    PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-    PROJECT_DIR = os.path.join(PROJECT_ROOT,'../psychomino')
 
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = 'staticfiles'
     STATIC_URL = '/static/'
-    
-    STATIC_ROOT = os.path.join(PROJECT_ROOT,'staticfiles/')
+
     STATICFILES_DIRS = (
-        os.path.join(PROJECT_DIR,'static/'),
+        os.path.join(BASE_DIR, 'static'),
     )
 
 class Development(Common):
@@ -97,17 +94,18 @@ class Development(Common):
 
     TEMPLATE_DEBUG = True
 
-    ALLOWED_HOSTS = []
-
     INSTALLED_APPS = Common.INSTALLED_APPS + (
         'debug_toolbar',
     )
 
 
+class Staging(Development):
+    pass
+"""
 class Staging(Common):
-    """
+    
     The in-staging settings.
-    """
+
     INSTALLED_APPS = Common.INSTALLED_APPS + (
         'djangosecure',
     )
@@ -123,8 +121,9 @@ class Staging(Common):
     SECURE_PROXY_SSL_HEADER = values.TupleValue(
         ('HTTP_X_FORWARDED_PROTO', 'https')
     )
+    DEBUG = True
 
-    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+"""
 
 
 class Production(Staging):
