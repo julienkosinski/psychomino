@@ -1,0 +1,75 @@
+@font-face{
+    font-family: 'open-sans';
+    src : url('../font/OpenSans-Regular.ttf');
+}
+
+body, html{
+    background: #f3ddd0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    margin : 0;
+}
+a, a:hover, a:visited{
+    color: white;
+    text-decoration: none;
+    font-family: 'open-sans';
+}
+header{
+    background-color: #f23d5e;
+    padding: 8px;
+    height: 86px;
+}
+
+header .header-logo{
+    width: 200px;
+    height: 80px;
+    display: block;
+    margin: 3px;
+    float: left;
+}
+
+header nav.nav-right{
+    display: block;
+    width : 312px;
+    float: right;
+    margin-top: 30px;
+    text-align: right;
+    margin-right: 38px;
+}
+
+header nav a.nav-right-button{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 14px;
+}
+
+header nav a.nav-right-button:hover{
+    border-bottom: 3px solid white;
+}
+
+
+footer{
+    height: 50px;
+    background-color: #a72146;
+    text-align: center;
+}
+
+footer p{
+    color: white;
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+footer ul{
+    list-style: none;
+    width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+}
+footer ul li{
+    display: inline;
+    color: white;
+    font-family: sans-serif;
+}

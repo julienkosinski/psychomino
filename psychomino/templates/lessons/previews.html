@@ -8,11 +8,13 @@
 {% block title %}Prévisualisation du cours{% endblock %}
 
 {% block content %}
-    {%  comment %}
-	{% for branch in lesson.lesson.branches %}
-	{% endcomment %}
-		<p>{{lesson}}</p>
-    {% comment %}
-	{% endfor %}
-	{% endcomment %}
+
+{{lesson.lesson_title}}
+{% for branch in branches %}
+	{{branch.branch_title}}
+{% endfor %}
+{% for element in elements %}
+	{{element.element_content}}
+{% endfor %}
+
 {% endblock %}
