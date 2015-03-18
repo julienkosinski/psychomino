@@ -13,6 +13,8 @@ gunicorn
 psycopg2
 static
 wsgiref
+selenium
+pyvirtualdisplay
 
 # -e git://github.com/pydanny/django-admin2.git@develop#egg=django-admin2
 django-braces==1.4.0

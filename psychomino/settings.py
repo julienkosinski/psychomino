@@ -98,13 +98,9 @@ class Development(Common):
         'debug_toolbar',
     )
 
-
-class Staging(Development):
-    pass
-"""
 class Staging(Common):
     
-    The in-staging settings.
+    #The in-staging settings.
 
     INSTALLED_APPS = Common.INSTALLED_APPS + (
         'djangosecure',
@@ -121,10 +117,6 @@ class Staging(Common):
     SECURE_PROXY_SSL_HEADER = values.TupleValue(
         ('HTTP_X_FORWARDED_PROTO', 'https')
     )
-    DEBUG = True
-
-"""
-
 
 class Production(Staging):
     """
