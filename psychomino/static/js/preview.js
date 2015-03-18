@@ -3,6 +3,7 @@ var app = {
 	init: function($){
 		app.initFreewall($);
 		app.initFontSize($);
+		app.initCanvasSvg($);
 	},
 
 	initFreewall: function($){
@@ -35,6 +36,12 @@ var app = {
 				}
 			}
 		});
+	},
+
+	initCanvasSvg: function($){
+        html2canvas(document).then(function(canvas) {
+            document.body.appendChild(canvas);
+        });
 	}
 }
 
