@@ -12,7 +12,7 @@
 }
 
 
-body, html{
+body{
     background: #f3ddd0;
     padding: 0;
     left: 0;
@@ -78,6 +78,10 @@ footer ul li{
     color: white;
     font-family: sans-serif;
 }
+/*  Lessons  */
+body.lesson{
+    background: none;
+}
 .free-wall {
     margin: 15px;
 }
@@ -85,14 +89,16 @@ footer ul li{
     padding: 15px;
 }
 .handle {
-    border: 1px dotted orange;
-    padding: 4px;
+    border: 1px solid red;
+    padding: 20px;
 }
 #freewall{
     width: 1960px;
     max-height: 1120px !important;
 }
 
+
+/*  Rules  */
 .rules{
     width: 80%;
     text-align: justify;
@@ -101,7 +107,6 @@ footer ul li{
 .rules p{
     margin: 5px 0;
 }
-
 .rules h1{
     margin: 10px 0 5px 0;
     font-size: 24px;
@@ -112,7 +117,6 @@ footer ul li{
     font-size: 16px;
     font-family: 'open-sans-italic';
 }
-
 .rules h2{
     margin: 10px 0 5px 0;
     font-size: 20px;
