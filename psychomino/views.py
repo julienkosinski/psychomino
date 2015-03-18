@@ -27,3 +27,9 @@ def save_and_download_screenshots(id):
 	browser.save_screenshot('screenshot.png')
 	browser.quit()
 	display.stop()
+
+def home(request):
+    return render(request, 'psychomino/home.html')
+
+def rules(request):
+    return render(request, 'psychomino/rules.html')
