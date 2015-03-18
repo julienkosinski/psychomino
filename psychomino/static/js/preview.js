@@ -23,15 +23,15 @@ var app = {
 	initFontSize: function($){
 		/* Change font size to fit container */
 		$('#freewall .cell .cover .handle').each(function(){
-			var maxHeight = 300;
+			var maxHeight = 500;
 			var textHeight = $(this).height();
 			var ratio = textHeight / maxHeight;
 			if((textHeight / maxHeight) >= 1){
-				var newFontSize = 15 /ratio;
+				var newFontSize = 14 /ratio;
 				$(this).css('font-size', newFontSize + 'px');
 
-				if(newFontSize < 11){
-					$(this).css('font-size', 11 + 'px');
+				if(newFontSize < 14){
+					$(this).css('font-size', 14 + 'px');
 				}
 			}
 		});

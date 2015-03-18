@@ -9,6 +9,7 @@ body, html{
     left: 0;
     top: 0;
     margin : 0;
+    font-family: 'open-sans';
 }
 a, a:hover, a:visited{
     color: white;
@@ -44,24 +45,19 @@ header nav a.nav-right-button{
     font-size: 16px;
     margin-right: 14px;
 }
-
 header nav a.nav-right-button:hover{
     border-bottom: 3px solid white;
 }
-
-
 footer{
     height: 50px;
     background-color: #a72146;
     text-align: center;
 }
-
 footer p{
     color: white;
     font-size: 14px;
     font-family: sans-serif;
 }
-
 footer ul{
     list-style: none;
     width: 100px;
@@ -76,13 +72,14 @@ footer ul li{
 .free-wall {
     margin: 15px;
 }
-.cell {
-    cursor: move;
-}
 .cell .cover {
     padding: 15px;
 }
 .handle {
     border: 1px dotted orange;
     padding: 4px;
+}
+#freewall{
+    width: 1960px;
+    max-height: 1120px !important;
 }
