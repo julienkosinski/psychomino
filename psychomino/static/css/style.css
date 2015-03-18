@@ -2,6 +2,15 @@
     font-family: 'open-sans';
     src : url('../font/OpenSans-Regular.ttf');
 }
+@font-face{
+    font-family: 'open-sans-bold';
+    src : url('../font/OpenSans-Bold.ttf');
+}
+@font-face{
+    font-family: 'open-sans-italic';
+    src : url('../font/OpenSans-BoldItalic.ttf');
+}
+
 
 body, html{
     background: #f3ddd0;
@@ -82,4 +91,30 @@ footer ul li{
 #freewall{
     width: 1960px;
     max-height: 1120px !important;
+}
+
+.rules{
+    width: 80%;
+    text-align: justify;
+    margin: 0 auto;
+}
+.rules p{
+    margin: 5px 0;
+}
+
+.rules h1{
+    margin: 10px 0 5px 0;
+    font-size: 24px;
+    font-family: 'open-sans-bold';
+}
+.rules h3{
+    margin: 10px 0 5px 0;
+    font-size: 16px;
+    font-family: 'open-sans-italic';
+}
+
+.rules h2{
+    margin: 10px 0 5px 0;
+    font-size: 20px;
+    font-family: 'open-sans-bold';
 }
