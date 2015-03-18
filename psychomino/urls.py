@@ -11,6 +11,8 @@ router.register(r'elements', ElementViewSet, 'elements')
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'psychomino.views.home'),
+    url(r'^(?P<id>)/$', 'psychomino.views.home'),
+    url(r'^lessons/(?P<id>)/activate_download/$', 'psychomino.views.activate_download'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

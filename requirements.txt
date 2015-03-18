@@ -11,6 +11,8 @@ psycopg2==2.5.4
 Werkzeug==0.10.1
 django-imagekit
 django-contact-form
+selenium
+pyvirtualdisplay
 
 
 # -e git://github.com/pydanny/django-admin2.git@develop#egg=django-admin2

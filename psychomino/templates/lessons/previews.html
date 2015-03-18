@@ -8,6 +8,7 @@
 {% block title %}Prévisualisation du cours {{lesson.lesson_title}}{% endblock %}
 
 {% block content %}
+	<a href="/lessons/{{lesson.id}}/activate_download">Générer</a>
 	<div class="layout">
 		<div id="freewall" class="free-wall">
 			{% for element in elements %}
