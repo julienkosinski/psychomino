@@ -4,27 +4,18 @@ from selenium import webdriver
 from pyvirtualdisplay import Display
 from django.contrib.sites.models import Site
 
-def home(request, id):
-	try:
-		id
-	except NameError:
-		return render('psychomino/home.html')
-	else:
-		return render(id, 'psychomino/home.html')
-
 def activate_download(id):
 	pass	
 
-def save_and_download_screenshots(id):
+def save_and_download_screenshots(pk):
 	display = Display(visible=0, size=(1960, 1120))
 	display.start()
 	browser = webdriver.Firefox()
 	current_site = Site.objects.get_current()
 	
-	id = 1
-	browser.get('http://'+current_site.domain+'/api/lessons/'+id)
+	browser.get('http://'+current_site.domain+'/api/lessons/'+pk)
 	
-	browser.save_screenshot('screenshot.png')
+	browser.save_screenshot('/static/images/screenshot'+pk+'.png')
 	browser.quit()
 	display.stop()
 
