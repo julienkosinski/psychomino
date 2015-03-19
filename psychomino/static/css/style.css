@@ -134,3 +134,6 @@ body.lesson{
     font-size: 20px;
     font-family: 'open-sans-bold';
 }
+#generate {
+    color:black !important;
+}
