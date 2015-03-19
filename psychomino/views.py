@@ -7,16 +7,15 @@ from django.contrib.sites.models import Site
 def activate_download(id):
 	pass	
 
-def save_and_download_screenshots(id):
+def save_and_download_screenshots(pk):
 	display = Display(visible=0, size=(1960, 1120))
 	display.start()
 	browser = webdriver.Firefox()
 	current_site = Site.objects.get_current()
 	
-	id = 1
-	browser.get('http://'+current_site.domain+'/api/lessons/'+id)
+	browser.get('http://'+current_site.domain+'/api/lessons/'+pk)
 	
-	browser.save_screenshot('screenshot.png')
+	browser.save_screenshot('/static/images/screenshot'+pk+'.png')
 	browser.quit()
 	display.stop()
 
