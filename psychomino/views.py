@@ -4,10 +4,7 @@ from selenium import webdriver
 from pyvirtualdisplay import Display
 from django.contrib.sites.models import Site
 
-def activate_download(id):
-	pass	
-
-def save_and_download_screenshots(pk):
+def save_and_download_screenshots(request, pk):
 	display = Display(visible=0, size=(1960, 1120))
 	display.start()
 	browser = webdriver.Firefox()
