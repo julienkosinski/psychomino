@@ -283,11 +283,10 @@ function save() {
 }
 
 function load(newLesson) {
+  myDiagram.model = go.Model.fromJson(arbor);
   if(newLesson) {
     var id = ajaxDjango({lesson_title: 'Nouvelle leçon'}, 'lessons', 'post', 'Nouvelle leçon', null);
-    arbor.nodeDataArray.push({key: id, name: 'Nouvelle leçon'});
   }
-  myDiagram.model = go.Model.fromJson(arbor);
 }
 
 function ajaxDjangoImg(file, parent, method) {

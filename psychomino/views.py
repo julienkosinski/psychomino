@@ -16,6 +16,9 @@ def save_and_download_screenshots(request, pk):
 	browser.quit()
 	display.stop()
 
+def init(request):
+    return render(request, 'psychomino/index.html')
+
 def home(request, pk):
     return render(request, 'psychomino/index.html')
 
