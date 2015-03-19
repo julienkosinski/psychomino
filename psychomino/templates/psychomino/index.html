@@ -23,11 +23,9 @@
 		    </p>
 		    <p><a href="">Contact</a> - Copyright 2015</p>
 		</footer>
-		<script type="text/javascript" src="static/js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="static/js/go.js"></script>
 		<script type="text/javascript" src="static/js/app.js"></script>
 		<script type="text/javascript">
-		jQuery(document).ready(function($){
 			window.onload = function() {
 				if(window.location.pathname == '/') {
 					init(true);
@@ -36,7 +34,6 @@
 					loadLesson(window.location.pathname.substring(1,window.location.pathname.length));
 				}
 			};
-		});
 		</script>
 	</body>
 </html>
