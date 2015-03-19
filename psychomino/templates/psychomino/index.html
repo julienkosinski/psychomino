@@ -17,12 +17,17 @@
 		<div id="diagram" style="background-color: #FFFFF;">
 		</div>
         <footer>
-            <p><a href="">f</a> <a href="">t</a></p>
-            <p><a href="">Contact</a> - Copyright 2015</p>
-        </footer>
+		    <p>
+			    <a href="http://www.facebook.com/Psychomino"><img src="{% static 'img/fb.png' %}" alt="facebook" width="14" height="14"></a>
+			    <a href=""><img src="{% static 'img/tw.png' %}" alt="twitter" width="14" height="14"></a>
+		    </p>
+		    <p><a href="">Contact</a> - Copyright 2015</p>
+		</footer>
+		<script type="text/javascript" src="static/js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="static/js/go.js"></script>
 		<script type="text/javascript" src="static/js/app.js"></script>
 		<script type="text/javascript">
+		jQuery(document).ready(function($){
 			window.onload = function() {
 				if(window.location.pathname == '/') {
 					init(true);
@@ -31,6 +36,7 @@
 					loadLesson(window.location.pathname.substring(1,window.location.pathname.length));
 				}
 			};
+		});
 		</script>
 	</body>
 </html>

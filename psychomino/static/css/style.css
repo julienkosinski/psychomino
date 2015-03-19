@@ -61,7 +61,7 @@ header nav a.nav-right-button:hover{
     border-bottom: 3px solid white;
 }
 footer{
-    height: 50px;
+    height: 60px;
     background-color: #a72146;
     text-align: center;
     position:fixed;
@@ -70,8 +70,14 @@ footer{
 }
 footer p{
     color: white;
-    font-size: 14px;
+    font-size: 12px;
     font-family: sans-serif;
+    margin: 5px;
+}
+footer p img{
+    margin: 0 15px;
+    border: 1px solid white;
+    padding: 3px;
 }
 footer ul{
     list-style: none;
