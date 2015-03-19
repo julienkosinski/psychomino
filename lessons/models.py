@@ -28,7 +28,7 @@ class Element(models.Model):
     )
     element_type = models.CharField(max_length=4, choices=ELEMENT_TYPE_CHOICE)
     if element_type == 'IMG':
-        element_content = self.ElementImage()
+        element_content = models.ImageField(upload_to='original')
     else:
         element_content = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de création")
@@ -42,6 +42,7 @@ class Element(models.Model):
                                             options={'quality': 100})
         element = ElementImage.objects.all()[0]
         return element.element_image.url
+
 
     def __str__(self):
         return self.element_content

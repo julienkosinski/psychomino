@@ -1,3 +1,4 @@
+from rest_framework.parsers import FormParser, MultiPartParser, JSONParser
 from api.serializers import LessonSerializer, BranchSerializer, ElementSerializer
 from rest_framework import viewsets
 from lessons.models import Lesson, Branch, Element
@@ -5,7 +6,6 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer,TemplateHTMLRenderer
-from rest_framework.decorators import detail_route
 
 class LessonViewSet(viewsets.ModelViewSet):
 
@@ -87,7 +87,7 @@ class BranchViewSet(viewsets.ModelViewSet):
 
 class ElementViewSet(viewsets.ModelViewSet):
 
-
+    parser_classes=(FormParser, MultiPartParser,JSONParser)
     serializer_class = ElementSerializer
 
     def create(self, request):

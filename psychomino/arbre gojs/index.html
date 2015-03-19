@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<div id="diagram" style="background-color: #FFFFF; border: solid 1px black; height: 500px">
+		</div>
+		<textarea id="testText" style="width:100%;height:250px">
+			{ "class": "go.TreeModel",
+				  "nodeDataArray": [
+				{"key":"1", "name":"Stella Payne Diaz", "title":"CEO"},
+				{"key":"2", "name":"Luke Warm", "title":"VP Marketing/Sales", "parent":"1"},
+				{"key":"3", "name":"Meg Meehan Hoffa", "title":"Sales", "parent":"2"},
+				{"key":"4", "name":"Peggy Flaming", "title":"VP Engineering", "parent":"1"},
+				{"key":"5", "name":"Saul Wellingood", "title":"Manufacturing", "parent":"4"},
+				{"key":"6", "name":"Al Ligori", "title":"Marketing", "parent":"2"}
+				 ]
+				}
+		</textarea>
+		<script type="text/javascript" src="go.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript">
+			init();
+		</script>
+	</body>
+</html>

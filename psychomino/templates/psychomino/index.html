@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<div id="diagram" style="background-color: #FFFFF; border: solid 1px black; height: 500px">
+		</div>
+		<textarea id="testText" style="width:100%;height:250px">
+			{ "class": "go.TreeModel",
+				  "nodeDataArray": [
+				{"key":"2", "name":"Stella Payne Diaz", "title":"CEO"},
+				{"key":"8", "name":"Luke Warm", "title":"VP Marketing/Sales", "parent":"2"},
+				{"key":"7", "name":"Meg Meehan Hoffa", "title":"Sales", "parent":"8"},
+				{"key":"4", "name":"Peggy Flaming", "title":"VP Engineering", "parent":"2"},
+				{"key":"5", "name":"Saul Wellingood", "title":"Manufacturing", "parent":"4"},
+				{"key":"6", "name":"Al Ligori", "title":"Marketing", "parent":"8"}
+				 ]
+				}
+		</textarea>
+		<script type="text/javascript" src="static/js/go.js"></script>
+		<script type="text/javascript" src="static/js/app.js"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				if(window.location.pathname == '/') {
+					init(true);
+				}
+				else {
+					loadLesson(window.location.pathname.substring(1,window.location.pathname.length));
+				}
+			};
+		</script>
+	</body>
+</html>
