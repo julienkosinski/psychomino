@@ -1,23 +1,25 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
-	<head>
-		<title></title>
-	</head>
+	<head lang="en">
+        <meta charset="UTF-8">
+        <title>Pyschomino</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    </head>
 	<body>
-		<div id="diagram" style="background-color: #FFFFF; border: solid 1px black; height: 500px">
+        <header>
+            <a href="/" class="header-logo"><img src="{% static 'img/logo.png' %}" /></a>
+            <nav class="nav-right">
+                <a href="/api/lessons/{{id}}" class="nav-right-button">Print</a>
+                <a href="/rules" class="nav-right-button">Rules</a>
+            </nav>
+        </header>
+		<div id="diagram" style="background-color: #FFFFF;">
 		</div>
-		<textarea id="testText" style="width:100%;height:250px">
-			{ "class": "go.TreeModel",
-				  "nodeDataArray": [
-				{"key":"2", "name":"Stella Payne Diaz", "title":"CEO"},
-				{"key":"8", "name":"Luke Warm", "title":"VP Marketing/Sales", "parent":"2"},
-				{"key":"7", "name":"Meg Meehan Hoffa", "title":"Sales", "parent":"8"},
-				{"key":"4", "name":"Peggy Flaming", "title":"VP Engineering", "parent":"2"},
-				{"key":"5", "name":"Saul Wellingood", "title":"Manufacturing", "parent":"4"},
-				{"key":"6", "name":"Al Ligori", "title":"Marketing", "parent":"8"}
-				 ]
-				}
-		</textarea>
+        <footer>
+            <p><a href="">f</a> <a href="">t</a></p>
+            <p><a href="">Contact</a> - Copyright 2015</p>
+        </footer>
 		<script type="text/javascript" src="static/js/go.js"></script>
 		<script type="text/javascript" src="static/js/app.js"></script>
 		<script type="text/javascript">

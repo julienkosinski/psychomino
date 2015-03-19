@@ -4,14 +4,6 @@ from selenium import webdriver
 from pyvirtualdisplay import Display
 from django.contrib.sites.models import Site
 
-def home(request, id):
-	try:
-		id
-	except NameError:
-		return render('psychomino/home.html')
-	else:
-		return render(id, 'psychomino/home.html')
-
 def activate_download(id):
 	pass	
 
@@ -27,6 +19,9 @@ def save_and_download_screenshots(id):
 	browser.save_screenshot('screenshot.png')
 	browser.quit()
 	display.stop()
+
+def init(request):
+    return render(request, 'psychomino/index.html')
 
 def home(request, pk):
     return render(request, 'psychomino/index.html')
