@@ -113,7 +113,7 @@ function init(newLesson) {
       ajaxDjango({}, 'lessons/' + data.key, 'delete', null, null);
     }
     deleteNodes(array);
-
+    console.log(data);
     if(data.parent == null || data.parent == undefined) {
       createNodeFull('lesson', 'Nouvelle leçon', null);
     }
@@ -218,7 +218,7 @@ function init(newLesson) {
   // define the Link template
   myDiagram.linkTemplate =
     $(go.Link, go.Link.Orthogonal,
-      { corner: 5, relinkableFrom: true, relinkableTo: true },
+      { corner: 5},
       $(go.Shape, { strokeWidth: 4, stroke: "#00a4a4" }));  // the link shape
   // read in the JSON-format data from the "mySavedModel" element
   load(newLesson);

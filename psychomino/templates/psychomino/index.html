@@ -20,17 +20,24 @@
             <p><a href="">f</a> <a href="">t</a></p>
             <p><a href="">Contact</a> - Copyright 2015</p>
         </footer>
+        <script type="text/javascript" src="static/js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="static/js/go.js"></script>
 		<script type="text/javascript" src="static/js/app.js"></script>
 		<script type="text/javascript">
-			window.onload = function() {
+			$(function() {
+				var height = $(document).height();
+				console.log(height);
+				height += -86 - 60 + 300;
+				console.log(height);
+				document.getElementById("diagram").style.height = height + "px";
+				document.getElementById("diagram").style.marginTop = "-300px";
 				if(window.location.pathname == '/') {
 					init(true);
 				}
 				else {
 					loadLesson(window.location.pathname.substring(1,window.location.pathname.length));
 				}
-			};
+			});
 		</script>
 	</body>
 </html>
