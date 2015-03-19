@@ -2,13 +2,23 @@
     font-family: 'open-sans';
     src : url('../font/OpenSans-Regular.ttf');
 }
+@font-face{
+    font-family: 'open-sans-bold';
+    src : url('../font/OpenSans-Bold.ttf');
+}
+@font-face{
+    font-family: 'open-sans-italic';
+    src : url('../font/OpenSans-BoldItalic.ttf');
+}
 
-body, html{
+
+body{
     background: #f3ddd0;
     padding: 0;
     left: 0;
     top: 0;
     margin : 0;
+    font-family: 'open-sans';
 }
 a, a:hover, a:visited{
     color: white;
@@ -44,24 +54,19 @@ header nav a.nav-right-button{
     font-size: 16px;
     margin-right: 14px;
 }
-
 header nav a.nav-right-button:hover{
     border-bottom: 3px solid white;
 }
-
-
 footer{
     height: 50px;
     background-color: #a72146;
     text-align: center;
 }
-
 footer p{
     color: white;
     font-size: 14px;
     font-family: sans-serif;
 }
-
 footer ul{
     list-style: none;
     width: 100px;
@@ -73,16 +78,47 @@ footer ul li{
     color: white;
     font-family: sans-serif;
 }
+/*  Lessons  */
+body.lesson{
+    background: none;
+}
 .free-wall {
     margin: 15px;
-}
-.cell {
-    cursor: move;
 }
 .cell .cover {
     padding: 15px;
 }
 .handle {
-    border: 1px dotted orange;
-    padding: 4px;
+    border: 1px solid red;
+    padding: 20px;
+}
+#freewall{
+    width: 1960px;
+    max-height: 1120px !important;
+}
+
+
+/*  Rules  */
+.rules{
+    width: 80%;
+    text-align: justify;
+    margin: 0 auto;
+}
+.rules p{
+    margin: 5px 0;
+}
+.rules h1{
+    margin: 10px 0 5px 0;
+    font-size: 24px;
+    font-family: 'open-sans-bold';
+}
+.rules h3{
+    margin: 10px 0 5px 0;
+    font-size: 16px;
+    font-family: 'open-sans-italic';
+}
+.rules h2{
+    margin: 10px 0 5px 0;
+    font-size: 20px;
+    font-family: 'open-sans-bold';
 }
