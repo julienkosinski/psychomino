@@ -20,6 +20,9 @@ body{
     margin : 0;
     font-family: 'open-sans';
 }
+article{
+    margin-bottom: 100px !important;
+}
 a, a:hover, a:visited{
     color: white;
     text-decoration: none;
@@ -61,6 +64,9 @@ footer{
     height: 50px;
     background-color: #a72146;
     text-align: center;
+    position:fixed;
+    bottom:0;
+    width: 100%;
 }
 footer p{
     color: white;
