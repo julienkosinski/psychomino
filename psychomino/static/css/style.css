@@ -32,6 +32,10 @@ header{
     background-color: #f23d5e;
     padding: 8px;
     height: 86px;
+    z-index: 1000;
+    position: fixed;
+    top: 0px;
+    width: 100%;
 }
 
 header .header-logo{
@@ -112,6 +116,7 @@ body.lesson{
 
 /*  Rules  */
 .rules{
+    margin-top: 120px !important;
     width: 80%;
     text-align: justify;
     margin: 0 auto;

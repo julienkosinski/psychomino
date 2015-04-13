@@ -10,7 +10,7 @@
         <header>
             <a href="/" class="header-logo"><img src="{% static 'img/logo.png' %}" /></a>
             <nav class="nav-right">
-                <a href="/api/lessons/{{id}}" class="nav-right-button">Print</a>
+                <a href="/api/lessons/{{id}}" id="print" class="nav-right-button">Print</a>
                 <a href="/rules" class="nav-right-button">Rules</a>
             </nav>
         </header>
@@ -40,6 +40,10 @@
 				else {
 					loadLesson(window.location.pathname.substring(1,window.location.pathname.length));
 				}
+				$("canvas").focus( function() {
+			        $("canvas").css("outline-color","none");
+			        $("canvas").css("outline-style","none");
+			    });
 			});
 		</script>
 	</body>

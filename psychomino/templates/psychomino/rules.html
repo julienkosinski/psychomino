@@ -8,15 +8,12 @@
 </head>
 <body>
 <header>
-    <a href="/" class="header-logo"><img src="{% static 'img/logo.png' %}" /></a>
-    <nav class="nav-right">
-        <a href="#" class="nav-right-button">Login</a>
-        <br>
-        <a href="#" class="nav-right-button">Save</a>
-        <a href="/rules" class="nav-right-button">Rules</a>
-        <a href="#" class="nav-right-button">Print</a>
-    </nav>
-</header>
+            <a href="/" class="header-logo"><img src="{% static 'img/logo.png' %}" /></a>
+            <nav class="nav-right">
+                <a href="/api/lessons/{{id}}" id="print" class="nav-right-button">Print</a>
+                <a href="/rules" class="nav-right-button">Rules</a>
+            </nav>
+        </header>
 <article class="rules">
 <h1>Rules of Psychomino</h1>
 

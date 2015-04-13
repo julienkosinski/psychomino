@@ -5,7 +5,7 @@ from imagekit.processors import ResizeToFill, Adjust
 
 class Lesson(models.Model):
     lesson_title = models.CharField(max_length=200)
-    pub_date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de création")
+    pub_date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de creation")
     modify_date = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name="Date de modification")
 
     def __str__(self):
@@ -13,7 +13,7 @@ class Lesson(models.Model):
 
 class Branch(models.Model):
     branch_title = models.CharField(max_length=200)
-    pub_date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de création")
+    pub_date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de creation")
     modify_date = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name="Date de modification")
     branch_lesson = models.ForeignKey('Lesson', related_name='branches')
 
@@ -31,7 +31,7 @@ class Element(models.Model):
         element_content = models.ImageField(upload_to='original')
     else:
         element_content = models.TextField()
-    pub_date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de création")
+    pub_date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de creation")
     modify_date = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name="Date de modification")
     element_branch = models.ForeignKey('Branch', related_name='elements')
 

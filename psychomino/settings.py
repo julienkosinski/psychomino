@@ -104,10 +104,6 @@ class Development(Common):
 
     ALLOWED_HOSTS = []
 
-    INSTALLED_APPS = Common.INSTALLED_APPS + (
-        'debug_toolbar',
-    )
-
 
 class Staging(Common):
     """

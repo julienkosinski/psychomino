@@ -113,7 +113,6 @@ function init(newLesson) {
       ajaxDjango({}, 'lessons/' + data.key, 'delete', null, null);
     }
     deleteNodes(array);
-    console.log(data);
     if(data.parent == null || data.parent == undefined) {
       createNodeFull('lesson', 'Nouvelle leçon', null);
     }
@@ -353,7 +352,13 @@ function createNode(id, content, parent) {
 
   myDiagram.startTransaction("ajout d'un element");
   var nextkey = (myDiagram.model.nodeDataArray.length + 1).toString();
-  var newemp = { key: id, name: content, parent: parent };
+  var newemp = { key: id, name: content};
+  if(parent != null) {
+    newemp.parent = parent;
+  }
+  else {
+    document.getElementById("print").href += id;
+  }
   myDiagram.model.addNodeData(newemp);
   myDiagram.commitTransaction("ajout d'un element");
 }
@@ -435,6 +440,7 @@ function loadLesson(id) {
   ajaxLoadLesson(id, function(lesson) {
     if(lesson) {
       arbor.nodeDataArray.push({key: lesson.id, name: lesson.lesson_title});
+      document.getElementById('print').href += id;
       for (var i = 0; i < lesson.branches.length; i++) {
         arbor.nodeDataArray.push({key: lesson.branches[i].id, name: lesson.branches[i].branch_title, parent: lesson.branches[i].branch_lesson});
         for (var j = 0; j < lesson.branches[i].elements.length; j++) {
