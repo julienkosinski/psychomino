@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head lang="en">
+        <meta charset="UTF-8">
+        <title>Pyschomino</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    </head>
+	<body>
+        <header>
+            <a href="/" class="header-logo"><img src="{% static 'img/logo.png' %}" /></a>
+            <nav class="nav-right">
+                <a href="/api/lessons/{{id}}" class="nav-right-button">Print</a>
+                <a href="/rules" class="nav-right-button">Rules</a>
+            </nav>
+        </header>
+		<div id="diagram" style="background-color: #FFFFF;">
+		</div>
+        <footer>
+            <p><a href="">f</a> <a href="">t</a></p>
+            <p><a href="">Contact</a> - Copyright 2015</p>
+        </footer>
+		<script type="text/javascript" src="static/js/go.js"></script>
+		<script type="text/javascript" src="static/js/app.js"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				if(window.location.pathname == '/') {
+					init(true);
+				}
+				else {
+					loadLesson(window.location.pathname.substring(1,window.location.pathname.length));
+				}
+			};
+		</script>
+	</body>
+</html>

@@ -1,3 +1,4 @@
+from rest_framework.parsers import FormParser, MultiPartParser, JSONParser
 from api.serializers import LessonSerializer, BranchSerializer, ElementSerializer
 from rest_framework import viewsets
 from lessons.models import Lesson, Branch, Element
@@ -38,7 +39,6 @@ class LessonViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
     def update(self, request, pk, format=None):
         queryset = Lesson.objects.all()
         lesson = get_object_or_404(queryset, pk=pk)
@@ -48,13 +48,12 @@ class LessonViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
     def destroy(self, request, pk, format=None):
         queryset = Lesson.objects.all()
         lesson = get_object_or_404(queryset, pk=pk)
         lesson.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-        
+
 
 class BranchViewSet(viewsets.ModelViewSet):
 
@@ -88,7 +87,7 @@ class BranchViewSet(viewsets.ModelViewSet):
 
 class ElementViewSet(viewsets.ModelViewSet):
 
-
+    parser_classes=(FormParser, MultiPartParser,JSONParser)
     serializer_class = ElementSerializer
 
     def create(self, request):
