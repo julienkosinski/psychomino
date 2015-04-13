@@ -11,11 +11,10 @@ django-contact-form
 dj-static==0.0.6
 gunicorn
 psycopg2
-static
-wsgiref
 selenium
 pyvirtualdisplay
-
+newrelic
+whitenoise
 # -e git://github.com/pydanny/django-admin2.git@develop#egg=django-admin2
 django-braces==1.4.0
 django-crispy-forms==1.4.0

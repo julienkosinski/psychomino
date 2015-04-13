@@ -28,6 +28,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'psychomino.settings')
 os.environ.setdefault('DJANGO_CONFIGURATION', settings.title())
 
 from django.core.wsgi import get_wsgi_application
-from dj_static import Cling
+from whitenoise.django import DjangoWhiteNoise
 
-application = Cling(get_wsgi_application())
+application = get_wsgi_application()
+application = DjangoWhiteNoise(application)
