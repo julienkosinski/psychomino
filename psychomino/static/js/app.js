@@ -1,6 +1,8 @@
 var arbor = { "class": "go.TreeModel",
           "nodeDataArray": []
-        }
+        };
+
+var ip = location.host;
 
 function init(newLesson) {
 
@@ -299,7 +301,6 @@ function ajaxDjangoImg(file, parent, method) {
     fd.append("element_branch", parent);
 
     var ajax = new XMLHttpRequest();
-    var ip = location.host;
     ajax.open(method,'http://' + ip + '/elements',true)
     ajax.onreadystatechange = function() {
       if(ajax.readystate == 4 && (ajax.status == 200 || ajax.status == 201 || ajax.status == 204)) {
