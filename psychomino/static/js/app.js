@@ -299,7 +299,8 @@ function ajaxDjangoImg(file, parent, method) {
     fd.append("element_branch", parent);
 
     var ajax = new XMLHttpRequest();
-    ajax.open(method,'http://localhost:8000/elements',true)
+    var ip = location.host;
+    ajax.open(method,'http://' + ip + '/elements',true)
     ajax.onreadystatechange = function() {
       if(ajax.readystate == 4 && (ajax.status == 200 || ajax.status == 201 || ajax.status == 204)) {
         return ajax.responseText.id;
@@ -313,7 +314,7 @@ function ajaxDjangoImg(file, parent, method) {
 function ajaxDjango(params, link, method, content, parent) {
   var id = null;
   var ajax = new XMLHttpRequest();
-  ajax.open(method,'http://localhost:8000/' + link,true)
+  ajax.open(method,'http://' + ip + '/' + link,true)
   ajax.setRequestHeader('content-type', 'application/json');
   ajax.onreadystatechange = function() {
     if(ajax.readyState == 4 && (ajax.status == 200 || ajax.status == 201 || ajax.status == 204)) {
@@ -427,7 +428,7 @@ function nodeDoubleClick(e, obj) {
 
 function ajaxLoadLesson(id, func) {
   var ajax = new XMLHttpRequest();
-  ajax.open('get','http://localhost:8000/lessons/' + id,true)
+  ajax.open('get','http://' + ip + '/lessons/' + id,true)
   ajax.onreadystatechange = function() {
     if(ajax.readyState == 4 && (ajax.status == 200)) {
       func(JSON.parse(ajax.responseText));
