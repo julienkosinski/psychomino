@@ -152,11 +152,14 @@ article h2{
     height: 150px;
     padding: 10px 0;
 }
-.contact form input[type=submit]:hover{
+.contact form input[type=submit]{
     color: white;
     background-color: #f23d5e;
 }
-
+.contact form input[type=submit]:hover{
+    color: #a72146;
+    background-color: #fddde4;
+}
 /*  Lessons  */
 body.lesson{
     background: none;
