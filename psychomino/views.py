@@ -24,3 +24,6 @@ def home(request, pk):
 
 def rules(request):
     return render(request, 'psychomino/rules.html')
+
+def contact(request):
+    return render(request, 'psychomino/contact.html')

@@ -32,6 +32,12 @@ class LessonViewSet(viewsets.ModelViewSet):
         '''
         pass
 
+    def parse_wanted_style(datas):
+        '''
+            Parse the text we have. We have <i></i> for italic and <b></b> for bold. 
+        '''
+        pass
+
     def retrieve(self, request, pk=None):
         queryset = Lesson.objects.all()
         lessons = get_object_or_404(queryset, pk=pk)

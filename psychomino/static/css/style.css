@@ -1,3 +1,4 @@
+/*   FONTS   */
 @font-face{
     font-family: 'open-sans';
     src : url('../font/OpenSans-Regular.ttf');
@@ -11,17 +12,13 @@
     src : url('../font/OpenSans-BoldItalic.ttf');
 }
 
-
+/*   GENERAL   */
 body{
     background: #f3ddd0;
     padding: 0;
-    left: 0;
-    top: 0;
     margin : 0;
     font-family: 'open-sans';
-}
-article{
-    margin-bottom: 100px !important;
+    color: #555;
 }
 a, a:hover, a:visited{
     color: white;
@@ -30,53 +27,53 @@ a, a:hover, a:visited{
 }
 header{
     background-color: #f23d5e;
-    padding: 8px;
-    height: 86px;
-    z-index: 1000;
-    position: fixed;
-    top: 0px;
+    padding: 10px 0;
+    height: 80px;
     width: 100%;
+    position: relative;
 }
-
-header .header-logo{
-    width: 200px;
+header .header-logo img{
     height: 80px;
     display: block;
-    margin: 3px;
-    float: left;
+    position: absolute;
+    top:50%;
+    left: 15px;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
 }
-
 header nav.nav-right{
     display: block;
-    width : 312px;
-    float: right;
-    margin-top: 30px;
-    text-align: right;
-    margin-right: 38px;
+    position: absolute;
+    top:50%;
+    right: 40px;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
 }
-
 header nav a.nav-right-button{
     text-transform: uppercase;
     font-weight: bold;
     font-size: 16px;
-    margin-right: 14px;
+    margin-right: 15px;
 }
 header nav a.nav-right-button:hover{
     border-bottom: 3px solid white;
 }
+
 footer{
-    height: 60px;
+    height: 40px;
+    padding: 10px 0 20px 0;
+/*    position: relative;
+    top:calc(100vh - 170px);*/
     background-color: #a72146;
     text-align: center;
-    position:fixed;
-    bottom:0;
     width: 100%;
 }
 footer p{
     color: white;
     font-size: 12px;
     font-family: sans-serif;
-    margin: 5px;
+    margin :0;
+    margin-bottom: 10px;
 }
 footer p img{
     margin: 0 15px;
@@ -93,6 +90,75 @@ footer ul li{
     display: inline;
     color: white;
     font-family: sans-serif;
+}
+
+article{
+    width: 80%;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+}
+article h1{
+    font-family: 'open-sans-bold';
+    color: #a62046;
+    border-bottom: 5px solid #f23d5e;
+    width: 90%;
+    font-size: 40px;
+    margin: 15px 0 25px 0;
+    padding-left: 37px;
+    position: relative;
+}
+article h1:before{
+    content:url(../img/before.png);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 8px;
+    left: 0px;
+}
+article h3{
+    margin: 5px 0;
+    font-size: 20px;
+    font-family: 'open-sans-italic';
+    color: #f23d5e;
+}
+article h2{
+    margin: 10px 0;
+    font-size: 24px;
+    font-family: 'open-sans-bold';
+    color: #a62046;
+}
+
+/*   CONTACT   */
+.contact form{
+    width: 60%;
+    margin: 20px auto;
+}
+.contact form input, .contact form textarea{
+    display: block;
+    width: 90%;
+    padding: 0;
+    height: 50px;
+    background-color: #f2ddd0;
+    border: none;
+    margin: 10px 0;
+    font-family: 'open-sans-bold';
+    font-size: 16px;
+    text-align: center;
+    color: #f23d5e;
+}
+.contact form textarea{
+    height: 150px;
+    padding: 10px 0;
+}
+.contact form input[type=submit]{
+    color: white;
+    background-color: #f23d5e;
+}
+.contact form input[type=submit]:hover{
+    color: #a72146;
+    background-color: #fddde4;
 }
 /*  Lessons  */
 body.lesson{
@@ -113,32 +179,6 @@ body.lesson{
     max-height: 1120px !important;
 }
 
-
-/*  Rules  */
-.rules{
-    margin-top: 120px !important;
-    width: 80%;
-    text-align: justify;
-    margin: 0 auto;
-}
-.rules p{
-    margin: 5px 0;
-}
-.rules h1{
-    margin: 10px 0 5px 0;
-    font-size: 24px;
-    font-family: 'open-sans-bold';
-}
-.rules h3{
-    margin: 10px 0 5px 0;
-    font-size: 16px;
-    font-family: 'open-sans-italic';
-}
-.rules h2{
-    margin: 10px 0 5px 0;
-    font-size: 20px;
-    font-family: 'open-sans-bold';
-}
 #generate {
-    color:black !important;
+    color:#666666 !important;
 }
