@@ -24,7 +24,6 @@ class Common(Configuration):
     TEMPLATE_DEBUG = values.BooleanValue(DEBUG)
 
     ALLOWED_HOSTS = [".herokuapp.com"]
-    SITE_ID = 1
     # Application definition
     INSTALLED_APPS = (
         'django.contrib.admin',

@@ -13,10 +13,32 @@ class LessonViewSet(viewsets.ModelViewSet):
     serializer_class = LessonSerializer
     renderer_classes = (JSONRenderer, TemplateHTMLRenderer)
 
+    def svg_blocks_adjustments_font(datas):
+        '''
+            Define ratio text_length/font. Longer it is smaller it is.
+            You can implement it here Rouksana :-).
+        '''
+        pass
+
+    def svg_blocks_adjustments_height(datas):
+        '''
+            Define the width of a block according to the longest one.
+        '''
+        pass
+
+    def svg_blocks_imposition(datas):
+        '''
+            Place everything in the good order thanks to a packing binary algorithm.
+        '''
+        pass
+
     def retrieve(self, request, pk=None):
         queryset = Lesson.objects.all()
         lessons = get_object_or_404(queryset, pk=pk)
         serializer = LessonSerializer(lessons)
+        
+        # If we support HTML, then we consider the client is a browser. We will egnerate a svg or pdf file to download in the browser in this case.
+
         if request.accepted_renderer.format == 'html':
             lesson = serializer.data
             branches = lesson['branches']
@@ -28,6 +50,14 @@ class LessonViewSet(viewsets.ModelViewSet):
                             elements.append(each_elements)
                     continue
             lesson.pop('branches', None)
+
+            if request.QUERY_PARAMS.get('format', None) == 'pdf':
+                # Then it is a A4 PDF to generate.
+                pass
+            else:
+                # It sends a svg by default
+                svg_blocks_adjustments(serializer.data)
+
             return Response({'lesson': lesson, 'branches': branches, 'elements': elements}, template_name='lessons/previews.html')
         else:
             return Response(serializer.data)

@@ -11,11 +11,8 @@ newrelic==2.42.0.35
 Werkzeug==0.10.1
 django-imagekit
 django-contact-form
-selenium
-pyvirtualdisplay
-
-
-# -e git://github.com/pydanny/django-admin2.git@develop#egg=django-admin2
+svgwrite
+slumber
 django-braces==1.4.0
 django-crispy-forms==1.4.0
 django-datetime-widget==0.9.3
