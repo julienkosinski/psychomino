@@ -23,11 +23,10 @@
 
             <h1>Contact</h1>
 
-            <form class="message" action="" method="post">
-                <input type="text" name="name" placeholder="name">
-                <input type="mail" name="email" placeholder="mail">
-                <textarea name="message" placeholder="message"></textarea>
-                <input type="submit" value="send">
+            <form class="message" action="{% url "psychomino.views.contact" %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Envoyer">
             </form>
 
         </article>
