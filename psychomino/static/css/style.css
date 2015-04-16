@@ -96,8 +96,10 @@ article{
     width: 80%;
     text-align: justify;
     margin: 0 auto;
-    padding: 30px;
+    padding: 30px 50px;
     background-color: white;
+    position: relative;
+    min-height: 100px;
 }
 article h1{
     font-family: 'open-sans-bold';
@@ -106,7 +108,7 @@ article h1{
     width: 90%;
     font-size: 40px;
     margin: 15px 0 25px 0;
-    padding-left: 37px;
+    padding-left: 40px;
     position: relative;
 }
 article h1:before{
@@ -130,12 +132,33 @@ article h2{
     color: #a62046;
 }
 
+/*  SEARCH  */
+article div.search{
+    margin: 0;
+    padding:0;
+    position: absolute;
+    right: 0;
+    margin-right: calc(10% + 32px);
+    top: 55px;
+    width: 170px;
+    z-index: 1;
+}
+article div.search form input{
+    width: 100%;
+    height: 20px;
+    border: none;
+    padding: 5px;
+    padding-left: 27px;
+    position: relative;
+    background:url(../img/form.png) no-repeat #cedef2 5px;
+}
+
 /*   CONTACT   */
-.contact form{
+.contact form.message{
     width: 60%;
     margin: 20px auto;
 }
-.contact form input, .contact form textarea{
+.contact form.message input, .contact form textarea{
     display: block;
     width: 90%;
     padding: 0;
@@ -155,11 +178,21 @@ article h2{
 .contact form input[type=submit]{
     color: white;
     background-color: #f23d5e;
+    cursor: pointer;
 }
 .contact form input[type=submit]:hover{
     color: #a72146;
     background-color: #fddde4;
 }
+
+/*   RESULT SEARCH   */
+.result ul li {
+    list-style: none;
+}
+.result h2{
+    margin: 5px 0;
+}
+
 /*  Lessons  */
 body.lesson{
     background: none;
@@ -178,7 +211,6 @@ body.lesson{
     width: 1960px;
     max-height: 1120px !important;
 }
-
 #generate {
     color:#666666 !important;
 }
