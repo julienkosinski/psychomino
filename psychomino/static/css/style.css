@@ -153,6 +153,18 @@ article div.search form input{
     background:url(../img/form.png) no-repeat #cedef2 5px;
 }
 
+/*   SHARE   */
+.share p{
+    color: #a72146;
+    font-family: 'open-sans-bold';
+}
+.share a img{
+    margin: 0;
+    margin-right: 30px;
+    border: 1px solid #f23d5e;
+    padding: 5px;
+}
+
 /*   CONTACT   */
 .contact form.message{
     width: 60%;
