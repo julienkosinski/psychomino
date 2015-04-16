@@ -10,8 +10,7 @@
         <header>
             <a href="/" class="header-logo"><img src="{% static 'img/logo.png' %}" /></a>
             <nav class="nav-right">
-                <a href="/api/lessons/{{id}}" id="print" class="nav-right-button">Print</a>
-                <a href="/rules" class="nav-right-button">Règle</a>
+                <a href="/rules" class="nav-right-button">Règles</a>
                 <a href="/contact" class="nav-right-button">Contact</a>
             </nav>
         </header>
@@ -21,6 +20,21 @@
 		        		<input type="text" name="search" placeholder="Recherche...">
 		        	</form>
         		</div>
+
+        		<!-- A afficher si arbre fini -->
+        		<!-- TODO : url + titre -->
+        		<div class="share">
+        			<p>Partager</p>
+        			<a href="http://www.facebook.com/sharer.php?u=URL&t=TITRE">
+        				<img src="{% static 'img/fb2.png' %}" alt="facebook" width="20" height="20"></a>
+			    	<a href="http://twitter.com/home?status=TEXTE">
+			    		<img src="{% static 'img/tw2.png' %}" alt="twitter" width="20" height="20">
+			    	</a>
+			    	<a href="https://plus.google.com/share?url=URL">
+			    		<img src="{% static 'img/g+2.png' %}" alt="google+" width="20" height="20">
+			    	</a>
+        		</div>
+
 	        </article>
         <footer>
 		    <p>

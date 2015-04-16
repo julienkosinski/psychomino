@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 from selenium import webdriver
 from pyvirtualdisplay import Display
