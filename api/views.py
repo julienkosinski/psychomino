@@ -6,12 +6,23 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer,TemplateHTMLRenderer
+from rest_framework.decorators import list_route
 
 class LessonViewSet(viewsets.ModelViewSet):
 
 
     serializer_class = LessonSerializer
     renderer_classes = (JSONRenderer, TemplateHTMLRenderer)
+
+    @list_route(methods=['GET'])
+    def search(self, request):
+        search = request.QUERY_PARAMS.get('search', None)
+        lessons = Lesson.objects.filter(lesson_title__icontains=search)
+        serializer = LessonSerializer(lessons, many=True)
+        if request.accepted_renderer.format == 'html':
+            return Response({'lessons': serializer.data}, template_name='lessons/search.html')
+        else:
+            return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
         queryset = Lesson.objects.all()
