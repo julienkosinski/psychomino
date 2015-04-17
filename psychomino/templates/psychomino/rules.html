@@ -10,31 +10,36 @@
     <header>
         <a href="/" class="header-logo"><img src="{% static 'img/logo.png' %}" /></a>
         <nav class="nav-right">
-            <a href="/api/lessons/{{id}}" id="print" class="nav-right-button">Print</a>
-            <a href="/rules" class="nav-right-button">Rules</a>
+            <a href="/rules" class="nav-right-button">Règles</a>
             <a href="/contact" class="nav-right-button">Contact</a>
         </nav>
     </header>
-<article class="rules">
-    <h1>Rules of Psychomino</h1>
+        <article class="rules">
+            <div class="search">
+                <form action="/lessons/search?search" method="get">
+                    <input type="text" name="search" placeholder="Recherche...">
+                </form>
+            </div>
 
-    <h2>Presentation</h2>
-    <p>Underweaaar tank yuuu! Potatoooo tatata bala tu ti aamoo! Hahaha aaaaaah bananaaaa poopayee po kass baboiii la bodaaa la bodaaa po kass. La bodaaa potatoooo ti aamoo! Aaaaaah tank yuuu! Chasy po kass butt bee do bee do bee do. Hahaha hahaha la bodaaa hana dul sae la bodaaa gelatooo. Aaaaaah potatoooo hahaha bananaaaa potatoooo potatoooo tatata bala tu jiji potatoooo hana dul sae. Bappleees uuuhhh aaaaaah underweaaar. Jiji tank yuuu! Gelatooo chasy tatata bala tu. Ti aamoo! aaaaaah ti aamoo! Potatoooo pepete.</p>
+            <h1>Règles</h1>
 
-    <h3>Rule n°1 : </h3>
-    <p>Minions ipsum bananaaaa hahaha jeje tatata bala tu bananaaaa ti aamoo! Gelatooo potatoooo. Para tú bappleees pepete gelatooo. Jiji hana dul sae bananaaaa la bodaaa underweaaar baboiii chasy. Jeje aaaaaah tatata bala tu aaaaaah ti aamoo! Bee do bee do bee do butt chasy belloo! Jiji jeje. Pepete butt aaaaaah wiiiii uuuhhh me want bananaaa! Tatata bala tu. Jiji daa hahaha wiiiii underweh3aaar hana dul sae underweaaar poopayee pepete jiji. Bee do bee do bee do bee do bee do bee do jiji hahaha gelatooo potatoooo. Hahaha jiji bappleees jiji potatoooo bappleees.</p>
+            <h2>Presentation</h2>
+            <p>Underweaaar tank yuuu! Potatoooo tatata bala tu ti aamoo! Hahaha aaaaaah bananaaaa poopayee po kass baboiii la bodaaa la bodaaa po kass. La bodaaa potatoooo ti aamoo! Aaaaaah tank yuuu! Chasy po kass butt bee do bee do bee do. Hahaha hahaha la bodaaa hana dul sae la bodaaa gelatooo. Aaaaaah potatoooo hahaha bananaaaa potatoooo potatoooo tatata bala tu jiji potatoooo hana dul sae. Bappleees uuuhhh aaaaaah underweaaar. Jiji tank yuuu! Gelatooo chasy tatata bala tu. Ti aamoo! aaaaaah ti aamoo! Potatoooo pepete.</p>
 
-    <h3>Rule n°2 : </h3>
-    <p>Belloo! jeje underweaaar gelatooo baboiii tank yuuu! Tank yuuu! Me want bananaaa! Bananaaaa la bodaaa daa. Hana dul sae daa wiiiii bananaaaa poopayee aaaaaah chasy me want bananaaa! Jiji daa. La bodaaa baboiii jeje tank yuuu! Wiiiii jiji jiji po kass bananaaaa underweaaar. Me want bananaaa! uuuhhh hahaha jeje aaaaaah me want bananaaa! Potatoooo. Wiiiii para tú belloo! Daa.</p>
+            <h3>Règles n°1 : </h3>
+            <p>Minions ipsum bananaaaa hahaha jeje tatata bala tu bananaaaa ti aamoo! Gelatooo potatoooo. Para tú bappleees pepete gelatooo. Jiji hana dul sae bananaaaa la bodaaa underweaaar baboiii chasy. Jeje aaaaaah tatata bala tu aaaaaah ti aamoo! Bee do bee do bee do butt chasy belloo! Jiji jeje. Pepete butt aaaaaah wiiiii uuuhhh me want bananaaa! Tatata bala tu. Jiji daa hahaha wiiiii underweh3aaar hana dul sae underweaaar poopayee pepete jiji. Bee do bee do bee do bee do bee do bee do jiji hahaha gelatooo potatoooo. Hahaha jiji bappleees jiji potatoooo bappleees.</p>
 
-    <h3>Rule n°3 : </h3>
-    <p>Underweaaar tank yuuu! Potatoooo tatata bala tu ti aamoo! Hahaha aaaaaah bananaaaa poopayee po kass baboiii la bodaaa la bodaaa po kass. La bodaaa potatoooo ti aamoo! Aaaaaah tank yuuu! Chasy po kass butt bee do bee do bee do. Hahaha hahaha la bodaaa hana dul sae la bodaaa gelatooo. Aaaaaah potatoooo hahaha bananaaaa potatoooo potatoooo tatata bala tu jiji potatoooo hana dul sae. Bappleees uuuhhh aaaaaah underweaaar. Jiji tank yuuu! Gelatooo chasy tatata bala tu. Ti aamoo! aaaaaah ti aamoo! Potatoooo pepete.</p>
+            <h3>Règles n°2 : </h3>
+            <p>Belloo! jeje underweaaar gelatooo baboiii tank yuuu! Tank yuuu! Me want bananaaa! Bananaaaa la bodaaa daa. Hana dul sae daa wiiiii bananaaaa poopayee aaaaaah chasy me want bananaaa! Jiji daa. La bodaaa baboiii jeje tank yuuu! Wiiiii jiji jiji po kass bananaaaa underweaaar. Me want bananaaa! uuuhhh hahaha jeje aaaaaah me want bananaaa! Potatoooo. Wiiiii para tú belloo! Daa.</p>
 
-</article>
+            <h3>Règles n°3 : </h3>
+            <p>Underweaaar tank yuuu! Potatoooo tatata bala tu ti aamoo! Hahaha aaaaaah bananaaaa poopayee po kass baboiii la bodaaa la bodaaa po kass. La bodaaa potatoooo ti aamoo! Aaaaaah tank yuuu! Chasy po kass butt bee do bee do bee do. Hahaha hahaha la bodaaa hana dul sae la bodaaa gelatooo. Aaaaaah potatoooo hahaha bananaaaa potatoooo potatoooo tatata bala tu jiji potatoooo hana dul sae. Bappleees uuuhhh aaaaaah underweaaar. Jiji tank yuuu! Gelatooo chasy tatata bala tu. Ti aamoo! aaaaaah ti aamoo! Potatoooo pepete.</p>
+            
+        </article>
     <footer>
         <p>
-            <a href="http://www.facebook.com/Psychomino"><img src="{% static 'img/fb.png' %}" alt="facebook" width="14" height="14"></a>
-            <a href=""><img src="{% static 'img/tw.png' %}" alt="twitter" width="14" height="14"></a>
+            <a href="http://www.facebook.com/Psychomino" target="_blank"><img src="{% static 'img/fb.png' %}" alt="facebook" width="14" height="14"></a>
+            <a href="" target="_blank"><img src="{% static 'img/tw.png' %}" alt="twitter" width="14" height="14"></a>
         </p>
         <p>Copyright 2015</p>
     </footer>

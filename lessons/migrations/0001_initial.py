@@ -13,10 +13,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Branch',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, verbose_name='ID', auto_created=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
                 ('branch_title', models.CharField(max_length=200)),
-                ('pub_date', models.DateTimeField(verbose_name='Date de création', auto_now_add=True)),
-                ('modify_date', models.DateTimeField(verbose_name='Date de modification', auto_now=True)),
+                ('pub_date', models.DateTimeField(auto_now_add=True, verbose_name='Date de creation')),
+                ('modify_date', models.DateTimeField(auto_now=True, verbose_name='Date de modification')),
             ],
             options={
             },
@@ -25,11 +25,11 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Element',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, verbose_name='ID', auto_created=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
+                ('element_type', models.CharField(choices=[('IMG', 'Image'), ('TEXT', 'Text')], max_length=4)),
                 ('element_content', models.TextField()),
-                ('element_type', models.CharField(max_length=4, choices=[('IMG', 'Image'), ('TEXT', 'Text')])),
-                ('pub_date', models.DateTimeField(verbose_name='Date de création', auto_now_add=True)),
-                ('modify_date', models.DateTimeField(verbose_name='Date de modification', auto_now=True)),
+                ('pub_date', models.DateTimeField(auto_now_add=True, verbose_name='Date de creation')),
+                ('modify_date', models.DateTimeField(auto_now=True, verbose_name='Date de modification')),
                 ('element_branch', models.ForeignKey(to='lessons.Branch', related_name='elements')),
             ],
             options={
@@ -39,10 +39,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Lesson',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, verbose_name='ID', auto_created=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
                 ('lesson_title', models.CharField(max_length=200)),
-                ('pub_date', models.DateTimeField(verbose_name='Date de création', auto_now_add=True)),
-                ('modify_date', models.DateTimeField(verbose_name='Date de modification', auto_now=True)),
+                ('pub_date', models.DateTimeField(auto_now_add=True, verbose_name='Date de creation')),
+                ('modify_date', models.DateTimeField(auto_now=True, verbose_name='Date de modification')),
             ],
             options={
             },
