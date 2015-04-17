@@ -204,25 +204,3 @@ article div.search form input{
 .result h2{
     margin: 5px 0;
 }
-
-/*  Lessons  */
-body.lesson{
-    background: none;
-}
-.free-wall {
-    margin: 15px;
-}
-.cell .cover {
-    padding: 15px;
-}
-.handle {
-    border: 1px solid red;
-    padding: 20px;
-}
-#freewall{
-    width: 1960px;
-    max-height: 1120px !important;
-}
-#generate {
-    color:#666666 !important;
-}

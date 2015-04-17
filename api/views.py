@@ -13,7 +13,6 @@ class LessonViewSet(viewsets.ModelViewSet):
 
 
     serializer_class = LessonSerializer
-    renderer_classes = (JSONRenderer, TemplateHTMLRenderer)
 
     def create_svg(datas):        
         svg_lasercut = svgwrite.Drawing('test.svg', profile='tiny')
@@ -60,7 +59,7 @@ class LessonViewSet(viewsets.ModelViewSet):
                 # It sends a svg by default
                 create_svg(serializer.data)
 
-            return Response({'lesson': lesson, 'branches': branches, 'elements': elements}, template_name='lessons/previews.html')
+            return Response({'lesson': lesson, 'branches': branches, 'elements': elements})
         else:
             return Response(serializer.data)
 
