@@ -196,6 +196,10 @@ article div.search form input{
     color: #a72146;
     background-color: #fddde4;
 }
+.contact ul li{
+    list-style: none;
+    font-family: 'open-sans-italic';
+}
 
 /*   RESULT SEARCH   */
 .result ul li {
