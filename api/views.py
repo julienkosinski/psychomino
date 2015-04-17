@@ -13,6 +13,7 @@ class LessonViewSet(viewsets.ModelViewSet):
 
 
     serializer_class = LessonSerializer
+    renderer_classes = (JSONRenderer, TemplateHTMLRenderer)
 
     def create_svg(datas):        
         svg_lasercut = svgwrite.Drawing('test.svg', profile='tiny')
