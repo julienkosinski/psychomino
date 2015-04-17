@@ -17,7 +17,6 @@ urlpatterns = patterns('',
     url(r'^rules/', 'psychomino.views.rules'),
     url(r'^contact/', 'psychomino.views.contact'),
     url(r'^(?P<pk>\d+)$', 'psychomino.views.home'),
-    url(r'^lessons/(?P<pk>\d+)/activate_download/$', 'psychomino.views.save_and_download_screenshots'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

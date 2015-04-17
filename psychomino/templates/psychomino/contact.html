@@ -10,25 +10,30 @@
     <header>
         <a href="/" class="header-logo"><img src="{% static 'img/logo.png' %}" /></a>
         <nav class="nav-right">
-            <a href="/api/lessons/{{id}}" id="print" class="nav-right-button">Print</a>
-            <a href="/rules" class="nav-right-button">Rules</a>
+            <a href="/rules" class="nav-right-button">Règles</a>
             <a href="/contact" class="nav-right-button">Contact</a>
         </nav>
     </header>
-<article class="contact">
-    <h1>Contact</h1>
-    <form action="" method="post">
-        <input type="text" name="name" placeholder="name">
-        <input type="mail" name="email" placeholder="mail">
-        <textarea name="message" placeholder="message"></textarea>
-        <input type="submit" value="send">
-    </form>
+        <article class="contact">
+            <div class="search">                    
+                <form action="/lessons/search?search" method="get">               
+                    <input type="text" name="search" placeholder="Recherche...">
+                </form>
+            </div>
 
-</article>
+            <h1>Contact</h1>
+
+            <form class="message" action="{% url "psychomino.views.contact" %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Envoyer">
+            </form>
+
+        </article>
     <footer>
         <p>
-            <a href="http://www.facebook.com/Psychomino"><img src="{% static 'img/fb.png' %}" alt="facebook" width="14" height="14"></a>
-            <a href=""><img src="{% static 'img/tw.png' %}" alt="twitter" width="14" height="14"></a>
+            <a href="http://www.facebook.com/Psychomino" target="_blank"><img src="{% static 'img/fb.png' %}" alt="facebook" width="14" height="14"></a>
+            <a href="" target="_blank"><img src="{% static 'img/tw.png' %}" alt="twitter" width="14" height="14"></a>
         </p>
         <p>Copyright 2015</p>
     </footer>

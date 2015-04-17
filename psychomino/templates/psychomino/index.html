@@ -10,42 +10,41 @@
         <header>
             <a href="/" class="header-logo"><img src="{% static 'img/logo.png' %}" /></a>
             <nav class="nav-right">
-                <a href="/api/lessons/{{id}}" id="print" class="nav-right-button">Print</a>
-                <a href="/rules" class="nav-right-button">Rules</a>
+                <a href="/rules" class="nav-right-button">Règles</a>
                 <a href="/contact" class="nav-right-button">Contact</a>
             </nav>
         </header>
-		<!-- <div id="diagram" style="background-color: #FFFFF;"> -->
-		</div>
+	        <article>
+	        	<div class="search">
+        			<form action="/lessons/search?search" method="get">
+		        		<input type="text" name="search" placeholder="Recherche...">
+		        	</form>
+        		</div>
+
+        		<!-- A afficher si arbre fini -->
+        		<!-- TODO : url + titre -->
+        		<div class="share">
+        			<p>Partager</p>
+        			<a href="http://www.facebook.com/sharer.php?u=URL" target="_blank">
+        				<img src="{% static 'img/fb2.png' %}" alt="facebook" width="20" height="20"></a>
+			    	<a href="http://twitter.com/home?status=URL" target="_blank">
+			    		<img src="{% static 'img/tw2.png' %}" alt="twitter" width="20" height="20">
+			    	</a>
+			    	<a href="https://plus.google.com/share?url=URL" target="_blank">
+			    		<img src="{% static 'img/g+2.png' %}" alt="google+" width="20" height="20">
+			    	</a>
+        		</div>
+
+	        </article>
         <footer>
 		    <p>
-			    <a href="http://www.facebook.com/Psychomino"><img src="{% static 'img/fb.png' %}" alt="facebook" width="14" height="14"></a>
-			    <a href=""><img src="{% static 'img/tw.png' %}" alt="twitter" width="14" height="14"></a>
+			    <a href="http://www.facebook.com/Psychomino" target="_blank"><img src="{% static 'img/fb.png' %}" alt="facebook" width="14" height="14"></a>
+			    <a href="" target="_blank"><img src="{% static 'img/tw.png' %}" alt="twitter" width="14" height="14"></a>
 		    </p>
 		    <p>Copyright 2015</p>
 		</footer>
         <script type="text/javascript" src="static/js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="static/js/go.js"></script>
 		<script type="text/javascript" src="static/js/app.js"></script>
-		<script type="text/javascript">
-			$(function() {
-				var height = $(document).height();
-				console.log(height);
-				height += -86 - 60 + 300;
-				console.log(height);
-				document.getElementById("diagram").style.height = height + "px";
-				document.getElementById("diagram").style.marginTop = "-300px";
-				if(window.location.pathname == '/') {
-					init(true);
-				}
-				else {
-					loadLesson(window.location.pathname.substring(1,window.location.pathname.length));
-				}
-				$("canvas").focus( function() {
-			        $("canvas").css("outline-color","none");
-			        $("canvas").css("outline-style","none");
-			    });
-			});
-		</script>
 	</body>
 </html>

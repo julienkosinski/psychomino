@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Pyschomino</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    </head>
+    <body>
+        <header>
+            <a href="/" class="header-logo"><img src="../static/img/logo.png" /></a>
+            <nav class="nav-right">
+                <a href="/rules" class="nav-right-button">Règles</a>
+                <a href="/contact" class="nav-right-button">Contact</a>
+            </nav>
+        </header>
+            <article class="result">
+                <div class="search">
+                    <form action="/lessons/search?search" method="get">
+                        <input type="text" name="search" placeholder="Recherche...">
+                    </form>
+                </div>
+
+                <h1>Recherche</h1>
+                <ul>
+                    {% for lesson in lessons %}
+                        <li>
+                            <h2>
+                                {{ lesson.lesson_title }}
+                            </h2>
+                            <ul>
+                                {% for branch in lesson.branches %}
+                                    {% if forloop.counter <= 4 %}
+                                        <li>
+                                            {{ branch.branch_title }}
+                                        </li>
+                                    {%  endif %}
+                                {% empty %}
+                                    <li>Ce cours est vide</li>
+                                {%  endfor %}
+                            </ul>
+                        </li>
+                    {% empty %}
+                        <li>Aucun cours ne correspond à votre recherche</li>
+                    {% endfor %}
+                </ul>
+
+            </article>
+        </div>
+        <footer>
+            <p>
+                <a href="http://www.facebook.com/Psychomino" target="_blank"><img src="../static/img/fb.png" alt="facebook" width="14" height="14"></a>
+                <a href=""><img src="../static/img/tw.png" alt="twitter" width="14" height="14"></a>
+            </p>
+            <p>Copyright 2015</p>
+        </footer>
+    </body>
+</html>

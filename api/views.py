@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer,TemplateHTMLRenderer
 import svgwrite
+from rest_framework.decorators import list_route
 
 class LessonViewSet(viewsets.ModelViewSet):
 
@@ -16,12 +17,22 @@ class LessonViewSet(viewsets.ModelViewSet):
 
     def create_svg(datas):        
         svg_lasercut = svgwrite.Drawing('test.svg', profile='tiny')
-        
+
     def svg_blocks_imposition(datas):
         '''
             Place everything in the good order thanks to a packing binary algorithm.
         '''
         pass
+
+    @list_route(methods=['GET'])
+    def search(self, request):
+        search = request.QUERY_PARAMS.get('search', None)
+        lessons = Lesson.objects.filter(lesson_title__icontains=search)
+        serializer = LessonSerializer(lessons, many=True)
+        if request.accepted_renderer.format == 'html':
+            return Response({'lessons': serializer.data}, template_name='lessons/search.html')
+        else:
+            return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
         queryset = Lesson.objects.all()
