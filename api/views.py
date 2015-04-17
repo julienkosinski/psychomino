@@ -6,6 +6,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer,TemplateHTMLRenderer
+import svgwrite
 
 class LessonViewSet(viewsets.ModelViewSet):
 
@@ -13,28 +14,12 @@ class LessonViewSet(viewsets.ModelViewSet):
     serializer_class = LessonSerializer
     renderer_classes = (JSONRenderer, TemplateHTMLRenderer)
 
-    def svg_blocks_adjustments_font(datas):
-        '''
-            Define ratio text_length/font. Longer it is smaller it is.
-            You can implement it here Rouksana :-).
-        '''
-        pass
-
-    def svg_blocks_adjustments_height(datas):
-        '''
-            Define the width of a block according to the longest one.
-        '''
-        pass
-
+    def create_svg(datas):        
+        svg_lasercut = svgwrite.Drawing('test.svg', profile='tiny')
+        
     def svg_blocks_imposition(datas):
         '''
             Place everything in the good order thanks to a packing binary algorithm.
-        '''
-        pass
-
-    def parse_wanted_style(datas):
-        '''
-            Parse the text we have. We have <i></i> for italic and <b></b> for bold. 
         '''
         pass
 
@@ -62,7 +47,7 @@ class LessonViewSet(viewsets.ModelViewSet):
                 pass
             else:
                 # It sends a svg by default
-                svg_blocks_adjustments(serializer.data)
+                create_svg(serializer.data)
 
             return Response({'lesson': lesson, 'branches': branches, 'elements': elements}, template_name='lessons/previews.html')
         else:
