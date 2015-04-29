@@ -131,6 +131,10 @@ article h2{
     font-family: 'open-sans-bold';
     color: #a62046;
 }
+.node {
+    width:100px;
+    height:100px;
+}
 
 /*  SEARCH  */
 article div.search{
