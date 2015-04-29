@@ -9,8 +9,7 @@ def init(request):
     return render(request, 'psychomino/index.html')
 
 def home(request, pk):
-	current_url = request
-	return render(url, 'psychomino/index.html', locals())
+	return render(request, 'psychomino/index.html')
 
 def rules(request):
     return render(request, 'psychomino/rules.html')
