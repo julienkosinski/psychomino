@@ -196,6 +196,10 @@ article div.search form input{
     color: #a72146;
     background-color: #fddde4;
 }
+.contact ul li{
+    list-style: none;
+    font-family: 'open-sans-italic';
+}
 
 /*   RESULT SEARCH   */
 .result ul li {
@@ -205,24 +209,24 @@ article div.search form input{
     margin: 5px 0;
 }
 
-/*  Lessons  */
-body.lesson{
-    background: none;
-}
-.free-wall {
-    margin: 15px;
-}
-.cell .cover {
-    padding: 15px;
-}
-.handle {
-    border: 1px solid red;
-    padding: 20px;
-}
-#freewall{
-    width: 1960px;
-    max-height: 1120px !important;
-}
-#generate {
-    color:#666666 !important;
-}
+.workspace{ width: 100%;}
+.trunk{margin : 0 auto 0 auto;}
+.trunk, .branch-name, .item-element{background: #f23d5e; }
+.trunk, .branch-name {width: 128px; height: 52px;}
+.trunk .value, .branch-name .value{width: 118px; height: 42px; margin: 5px 0 0 5px;}
+.branch, .branch-items {margin-top: 110px;}
+.shortText{width: 52px; height: 52px;}
+.shortText .value{width: 46px; height: 46px; margin: 3px 0 0 3px;}
+
+.longText{width: 166px; height: 128px;}
+.longText .value{width: 156px; height: 118px; margin: 5px 0 0 5px;}
+
+.img{width: 128px; height: 128px;}
+.img .value{width: 118px; height: 118px; margin: 5px 0 0 5px;}
+
+.workspace .btn{font-weight: bold; padding: 0 5px 0 5px; border-radius: 5px 5px 0 0; display: block; width: 10px; height: 20px;}
+.workspace .add{color: white; background: #f23d5e; margin: 0 auto 0 auto; height: 40px; border-radius: 0 0 5px 5px; line-height: 60px}
+.workspace .toggle{color: white; background: #f3ddd0; border-radius: 0 0 5px 5px; float: right; margin-top: -35px; margin-right: 16px;}
+.workspace .delete{  color: white; background: #a72146;}
+.workspace .right{}
+.workspace .left{}
