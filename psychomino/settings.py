@@ -12,12 +12,6 @@ from configurations import Configuration, values
 
 class Common(Configuration):
     # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_USE_TLS = True
-    EMAIL_HOST = 'smtp.live.com'
-    EMAIL_PORT = 587
-    EMAIL_HOST_USER = 'lol.mdr698@hotmail.fr'
-    EMAIL_HOST_PASSWORD = 'psychomino1'
 
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 

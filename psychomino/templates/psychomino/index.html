@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 	<head lang="en">
         <meta charset="UTF-8">
         <title>Pyschomino</title>
@@ -20,17 +20,198 @@
 		        		<input type="text" name="search" placeholder="Recherche...">
 		        	</form>
         		</div>
-                <div id="test1" style="width:10px;height:10px;">
-                    
-                </div>
-                <div id="test2" style="width:10px;height:10px;">
 
-                </div>
-                <div id="arbre">
+                <!-- Div qui contient l'arbre -->
+                <div id="tree" class="tree">
+                    <!-- Div de la lesson (c'est le 1er bloc de l'arbre) -->
+                    <div class="trunk">
+                        <p class="value">Sujet</p>
+                        <a class="btn add branchAdd">+</a>
+                    </div>
 
+                    <!-- Div qui contient toutes les branches -->
+                    <div class="contentTrunk">
+                        <div class="grow">
+                            <a class="btn delete branchAdd">x</a>
+                            <!-- Div de la branche (c'est le bloc qui affichera une branche, il peut y en avoir plusieurs) -->
+                            <div class="branch">
+                                <p class="value">Branche</p>
+                                <a class="btn add branchAdd">+</a>
+                            </div>
+
+                            <div class="contentBranch">
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element Image -->
+                                <div class="element elementImage">
+                                    <p class="value">Image</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de petit texte -->
+                                <div class="element elementLittletext">
+                                    <p class="value">ElementPetitTexte</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de grande taille -->
+                                <div class="element elementLongText">
+                                    <p class="value">ElementLongTexte</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grow">
+                            <div class="branch">
+                                <p class="value">Branche</p>
+                                <a class="btn add branchAdd">+</a>
+                            </div>
+
+                            <div class="contentBranch">
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element Image -->
+                                <div class="element elementImage">
+                                    <p class="value">Image</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de petit texte -->
+                                <div class="element elementLittletext">
+                                    <p class="value">ElementPetitTexte</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de grande taille -->
+                                <div class="element elementLongText">
+                                    <p class="value">ElementLongTexte</p>
+                                </div>
+
+
+                                <div class="element elementImage">
+                                    <p class="value">Image</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de petit texte -->
+                                <div class="element elementLittletext">
+                                    <p class="value">ElementPetitTexte</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de grande taille -->
+                                <div class="element elementLongText">
+                                    <p class="value">ElementLongTexte</p>
+                                </div>
+
+
+                                <div class="element elementImage">
+                                    <p class="value">Image</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de petit texte -->
+                                <div class="element elementLittletext">
+                                    <p class="value">ElementPetitTexte</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de grande taille -->
+                                <div class="element elementLongText">
+                                    <p class="value">ElementLongTexte</p>
+                                </div>
+
+                                <div class="element elementImage">
+                                    <p class="value">Image</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de petit texte -->
+                                <div class="element elementLittletext">
+                                    <p class="value">ElementPetitTexte</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de grande taille -->
+                                <div class="element elementLongText">
+                                    <p class="value">ElementLongTexte</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grow">
+                            <div class="branch">
+                                <p class="value">Branche</p>
+                                <a class="btn add branchAdd">+</a>
+                            </div>
+
+                            <div class="contentBranch">
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element Image -->
+                                <div class="element elementImage">
+                                    <p class="value">Image</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de petit texte -->
+                                <div class="element elementLittletext">
+                                    <p class="value">ElementPetitTexte</p>
+                                </div>
+
+                                <a class="btn delete item">x</a>
+                                <!-- Div qui contient un element de grande taille -->
+                                <div class="element elementLongText">
+                                    <p class="value">ElementLongTexte</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Div qui contient tous les elements d'une branche (il peut y en avoir plusieurs) -->
+
+                    </div>
+
+                    <!--<div class="branch-name">
+                        <textarea class="value" placeholder="Branche"></textarea>
+                        <a class="btn add item">+</a>
+                        <a class="btn toggle">-</a>
+                    </div>
+                    <div class="branch">
+                        <div class="branch-items">
+                            <div class="branch-item">
+                                <a class="left"><</a>
+                                <a class="right">></a>
+
+                                <div class="item-element img">
+                                    <a class="btn-intensity more">+</a>
+                                    <a class="btn-intensity less">-</a>
+                                    <a class="loadImage">I</a>
+                                    <div class="previsualisation">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="branch-item">
+                                <a class="left"><</a>
+                                <a class="right">></a>
+                                <a class="btn delete item">x</a>
+                                <div class="item-element longText">
+                                    <textarea class="value" placeholder="Texte long..."></textarea>
+                                </div>
+                            </div>
+                            <div class="branch-item">
+                                <a class="left"><</a>
+                                <a class="right">></a>
+                                <a class="btn delete item">x</a>
+                                <div class="item-element shortText">
+                                    <textarea class="value" placeholder="Texte court..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
         		<!-- A afficher si arbre fini -->
-        		<!-- TODO : url + titre -->
+        		<!-- TODO : url -->
         		<div class="share">
         			<p>Partager</p>
         			<a href="http://www.facebook.com/sharer.php?u=URL" target="_blank">
@@ -52,13 +233,12 @@
 		    <p>Copyright 2015</p>
 		</footer>
         <script type="text/javascript" src="static/js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="static/js/go.js"></script>
-		<script type="text/javascript" src="static/js/app.js"></script>
+		<!--<script type="text/javascript" src="static/js/app.js"></script>
         <script type="text/javascript" src="static/js/arbre/item.js"></script>
         <script type="text/javascript" src="static/js/arbre/trunk.js"></script>
         <script type="text/javascript" src="static/js/arbre/branch.js"></script>
         <script type="text/javascript" src="static/js/arbre/element.js"></script>
         <script type="text/javascript" src="static/js/arbre/app.js"></script>
-    <script type="text/javascript" src="static/lib/jsPlumb/dist/js/dom.jsPlumb-1.7.6-min.js"></script>
+        <script type="text/javascript" src="static/lib/jsPlumb/dist/js/dom.jsPlumb-1.7.6-min.js"></script>-->
 	</body>
 </html>

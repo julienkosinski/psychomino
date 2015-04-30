@@ -36,7 +36,7 @@ var Item = function() {
 				inp.type = "text";
 				inp.value = pText;
 				inp.id = "inpContent";
-				div.appendChild(inp);
+				div.insertBefore(inp, div.firstChild);
 				inp.focus();
 
 				inp.addEventListener('blur', function() {
@@ -45,7 +45,7 @@ var Item = function() {
 					var p2 = document.createElement('p');
 					p2.innerHTML = val;
 					p2.id = this2.id + "content";
-					div.appendChild(p2);
+					div.insertBefore(p2, div.firstChild);
 					div.removeChild(inp);
 					this2.sendUpdate(val);
 				});
@@ -60,14 +60,14 @@ var Item = function() {
 				inp.type = "text";
 				inp.value = pText;
 				inp.id = "inpContent";
-				div.appendChild(inp);
+				div.insertBefore(inp, div.firstChild);
 				inp.focus();
 				inp.addEvent('onblur', function() {
 					var val = inp.value;
 					var p2 = document.createElement('p');
 					p2.innerHTML = val;
 					p2.id = this2.id + "content";
-					div.appendChild(p2);
+					div.insertBefore(p2, div.firstChild);
 					div.removeChild(inp);
 					this2.sendUpdate(val);
 				});
@@ -105,7 +105,6 @@ var Item = function() {
 		var p = document.createElement('p');
 		p.innerHTML = text;
 		p.id = this.id + "content";
-		console.log(this.name + this.id);
 		document.getElementById(this.name + this.id).appendChild(p);
 
 	};

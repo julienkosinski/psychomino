@@ -28,6 +28,8 @@ var Element = function() {
 	this.callback = function() {
 		this.addDivNode();
 		this.addDivChildren();
+		this.addButtons();
+		this.setClass();
 		this.setLink()
 	};
 	this.sendUpdate = function(text) {
@@ -46,6 +48,25 @@ var Element = function() {
 				}
 			}
 		}
+	};
+	this.addButtons = function() {
+		var a = document.createElement('a');
+		var div = document.getElementById(this.name + this.id);
+		a.className = "left";
+		a.innerHTML = "<";
+		var b = document.createElement('a');
+		b.className = "right";
+		a.innerHTML = ">";
+		var c = document.createElement('a');
+		c.className = "btn delete item";
+		c.innerHTML = "X";
+		div.parentNode.insertBefore(b,div);
+		div.parentNode.insertBefore(a, div);
+		div.parentNode.insertBefore(c, div);
+	};
+	this.setClass = function() {
+		var div = document.getElementById(this.name + this.id);
+		div.className = "item-element";
 	};
 };
 

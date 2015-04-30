@@ -1,6 +1,6 @@
 window.onload = function() {
 	var trunk = new Trunk()
-	trunk.parent = "arbre";
-	trunk.parentId = "arbre";
+	trunk.parent = "tree";
+	trunk.parentId = "tree";
 	trunk.setId();
 }

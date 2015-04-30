@@ -33,6 +33,8 @@ var Trunk = function() {
 	this.callback = function() {
 		this.addDivNode();
 		this.addDivChildren();
+		this.addButtons();
+		this.setClass();
 		this.addBranch(this.id);
 	};
 	this.sendUpdate = function(text) {
@@ -49,5 +51,15 @@ var Trunk = function() {
 				}
 			}
 		};
+	};
+	this.addButtons = function() {
+		var a = document.createElement('a');
+		var div = document.getElementById(this.name + this.id);
+		a.className = "btn add branch";
+		div.appendChild(a);
+	};
+	this.setClass = function() {
+		var div = document.getElementById(this.name + this.id);
+		div.className = "trunk";
 	};
 };

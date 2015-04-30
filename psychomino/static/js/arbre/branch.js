@@ -34,6 +34,8 @@ var Branch = function() {
 	this.callback = function() {
 		this.addDivNode();
 		this.addDivChildren();
+		this.addButtons();
+		this.setClass();
 		this.setLink();
 		this.addElement(this.id);
 	};
@@ -52,6 +54,25 @@ var Branch = function() {
 				}
 			}
 		}
+	};
+	this.addButtons = function() {
+		var a = document.createElement('a');
+		var div = document.getElementById(this.name + this.id);
+		a.className = "btn add item";
+		var b = document.createElement('a');
+		b.className = "btn delete branch";
+		b.innerHTML = "X";
+		var c = document.createElement('a');
+		c.className = "btn toggle";
+		div.parentNode.insertBefore(b,div);
+		div.appendChild(a);
+		div.appendChild(c);
+	};
+	this.setClass = function() {
+		var div = document.getElementById(this.name + this.id);
+		div.className = "branch-name";
+		var div2 = document.getElementById('content' + this.name + this.id);
+		div2.className = "branch";
 	};
 };
 
