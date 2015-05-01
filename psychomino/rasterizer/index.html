@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Rasterizer </title>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="js/libs/dat.gui.min.js"></script>
+		<script type="text/javascript" src="js/Rasterizer.js"></script>
+	</head>
+
+	<body>
+		<canvas id='canvas'></canvas>
+		<script>
+			Rasterizer.init();
+			var gui = new dat.GUI();
+			gui.add(Rasterizer, 'uploadImage').name( 'Upload' );
+			gui.add(Rasterizer, 'intensity', 0.2, 3 ).onChange( function(value) { Rasterizer.draw() } );
+			gui.add(Rasterizer, 'save').name( 'Valider' );
+		</script>
+	</body>
+</html>
