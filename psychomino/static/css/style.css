@@ -217,18 +217,22 @@ article div.search form input{
 {
     overflow: auto;
     white-space: nowrap;
+    position:relative
 }
 .contentTrunk, .contentBranch
 {
     text-align: center;
+    margin-bottom: 20px;
 }
 .grow
 {
     display: inline-block;
+    margin-left: 10px;
+    margin-right:10px;
 }
 .branch, .element
 {
-    margin : 60px auto 0 auto;
+    margin : 60px 10px 0 10px;
     display: inline-block;
 }
 .trunk

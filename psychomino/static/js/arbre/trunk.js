@@ -3,6 +3,7 @@ var Trunk = function() {
 	Item.call(this);
 	this.name = 'Trunk';
 	this.content = "Nouvelle leçon";
+	this.numBranch = 0;
 	this.setId = function() {
 		var formData = new FormData();
 		formData.append('lesson_title','Nouvelle leçon');
@@ -24,10 +25,15 @@ var Trunk = function() {
 		};
 	};
 	this.addBranch = function(id) {
-		
+		this.numBranch += 1;
+		var grow = document.createElement('div');
+		grow.className = "grow";
+		grow.id = "grow" + this.numBranch;
+		document.getElementById("contentTrunk" + this.id).appendChild(grow);
 		var branch = new Branch();
-		branch.parent = 'content' + this.name + this.id;
-		branch.parentId = this.id;
+		branch.parent = "grow" + this.numBranch;
+		branch.elementParentId = this.id;
+		branch.elementParent = this.name + this.id;
 		branch.setId();
 	};
 	this.callback = function() {
@@ -35,6 +41,8 @@ var Trunk = function() {
 		this.addDivChildren();
 		this.addButtons();
 		this.setClass();
+		this.addBranch(this.id);
+		this.addBranch(this.id);
 		this.addBranch(this.id);
 	};
 	this.sendUpdate = function(text) {
@@ -55,11 +63,13 @@ var Trunk = function() {
 	this.addButtons = function() {
 		var a = document.createElement('a');
 		var div = document.getElementById(this.name + this.id);
-		a.className = "btn add branch";
+		a.innerHTML = "+";
+		a.className = "btn add branchAdd";
 		div.appendChild(a);
 	};
 	this.setClass = function() {
 		var div = document.getElementById(this.name + this.id);
 		div.className = "trunk";
+		var div2 = document.getElementById("content" + this.name + this.id);
 	};
 };

@@ -6,7 +6,7 @@ var Branch = function() {
 	this.setId = function() {
 		var formData = new FormData();
 		formData.append('branch_title','Nouvelle branche');
-		formData.append('branch_lesson', this.parentId);
+		formData.append('branch_lesson', this.elementParentId);
 		var xhr = this.getXMLHttpRequest();
 		xhr.open("POST", "http://" + location.host + "/branches", true);
 		xhr.setRequestHeader('Accept', 'application/json');
@@ -28,7 +28,8 @@ var Branch = function() {
 		
 		var element = new Element();
 		element.parent = 'content' + this.name + this.id;
-		element.parentId = this.id;
+		element.elementParentId = this.id;
+		element.elementParent = this.name + this.id;
 		element.setId();
 	};
 	this.callback = function() {
@@ -37,12 +38,15 @@ var Branch = function() {
 		this.addButtons();
 		this.setClass();
 		this.setLink();
+		jsPlumb.repaintEverything();
+		this.addElement(this.id);
+		this.addElement(this.id);
 		this.addElement(this.id);
 	};
 	this.sendUpdate = function(text) {
 		var formData = new FormData();
 		formData.append('branch_title',text);
-		formData.append('branch_lesson', this.parentId);
+		formData.append('branch_lesson', this.elementParentId);
 		var xhr = this.getXMLHttpRequest();
 		xhr.open("PUT", "http://" + location.host + "/branches/" + this.id, true);
 		xhr.setRequestHeader('Accept', 'application/json');
@@ -60,7 +64,7 @@ var Branch = function() {
 		var div = document.getElementById(this.name + this.id);
 		a.className = "btn add item";
 		var b = document.createElement('a');
-		b.className = "btn delete branch";
+		b.className = "btn delete branchAdd";
 		b.innerHTML = "X";
 		var c = document.createElement('a');
 		c.className = "btn toggle";
@@ -70,9 +74,9 @@ var Branch = function() {
 	};
 	this.setClass = function() {
 		var div = document.getElementById(this.name + this.id);
-		div.className = "branch-name";
+		div.className = "branch";
 		var div2 = document.getElementById('content' + this.name + this.id);
-		div2.className = "branch";
+		div2.className = "contentBranch";
 	};
 };
 

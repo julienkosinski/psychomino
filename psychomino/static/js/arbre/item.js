@@ -1,21 +1,37 @@
 var Item = function() {
 	this.id = null;
 	this.parent = null;
-	this.parentId = null;
+	this.elementParentId = null;
+	this.elementParent;
 	this.name = 'item';
 	this.font = null;
 	this.content = null;
 	this.setLink = function() {
-		console.log(this.id);
-		console.log(this.parent);
 		var source = this.name + this.id;
-		var target = this.parent
+		var target = this.elementParent;
+		console.log(source);
+		console.log(target);
+
+		jsPlumb.makeSource(source, {
+	    	connector: 'StateMachine',
+	    	anchor: "TopCenter"
+	  	});
+	  	jsPlumb.makeTarget(target, {
+		    anchor: "BottomCenter"
+	  	});
+
 		jsPlumb.connect(
 			{
 				source:source,
-				target:target
+				target:target,
+				paintStyle: {
+			        strokeStyle: "#5b9ada",
+			        lineWidth: 2
+			    }
 			}
 		);
+
+		jsPlumb.repaintEverything();
 	};
 	this.addDivNode = function() {
 
@@ -36,6 +52,7 @@ var Item = function() {
 				inp.type = "text";
 				inp.value = pText;
 				inp.id = "inpContent";
+				inp.className = "valueInput";
 				div.insertBefore(inp, div.firstChild);
 				inp.focus();
 
@@ -45,6 +62,7 @@ var Item = function() {
 					var p2 = document.createElement('p');
 					p2.innerHTML = val;
 					p2.id = this2.id + "content";
+					p2.className = "value";
 					div.insertBefore(p2, div.firstChild);
 					div.removeChild(inp);
 					this2.sendUpdate(val);
@@ -60,6 +78,7 @@ var Item = function() {
 				inp.type = "text";
 				inp.value = pText;
 				inp.id = "inpContent";
+				inp.className = "valueInput";
 				div.insertBefore(inp, div.firstChild);
 				inp.focus();
 				inp.addEvent('onblur', function() {
@@ -67,6 +86,7 @@ var Item = function() {
 					var p2 = document.createElement('p');
 					p2.innerHTML = val;
 					p2.id = this2.id + "content";
+					p2.className = "value";
 					div.insertBefore(p2, div.firstChild);
 					div.removeChild(inp);
 					this2.sendUpdate(val);
@@ -79,6 +99,7 @@ var Item = function() {
 
 		var div = document.createElement('div');
 		div.id = 'content' + this.name + this.id;
+		div.className = "content" + this.name;
 		document.getElementById(this.parent).appendChild(div);
 	};
 	this.setFont = function(font) {
@@ -105,7 +126,11 @@ var Item = function() {
 		var p = document.createElement('p');
 		p.innerHTML = text;
 		p.id = this.id + "content";
+		p.className = "value";
 		document.getElementById(this.name + this.id).appendChild(p);
+		var a = document.createElement('a');
+		a.id = this.id + "buttonAdd";
+		a.className = "btn add branchAdd";
 
 	};
 	this.getXMLHttpRequest = function() {

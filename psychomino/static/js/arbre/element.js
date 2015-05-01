@@ -7,7 +7,7 @@ var Element = function() {
 		var formData = new FormData();
 		formData.append('element_content','Nouvelle element');
 		formData.append('element_type','TEXT');
-		formData.append('element_branch', this.parentId);
+		formData.append('element_branch', this.elementParentId);
 		var xhr = this.getXMLHttpRequest();
 		xhr.open("POST", "http://" + location.host + "/elements", true);
 		xhr.setRequestHeader('Accept', 'application/json');
@@ -27,8 +27,8 @@ var Element = function() {
 	};
 	this.callback = function() {
 		this.addDivNode();
-		this.addDivChildren();
-		this.addButtons();
+		//this.addDivChildren();
+		//this.addButtons();
 		this.setClass();
 		this.setLink()
 	};
@@ -36,7 +36,7 @@ var Element = function() {
 		var formData = new FormData();
 		formData.append('element_content',text);
 		formData.append('element_type','TEXT');
-		formData.append('element_branch', this.parentId);
+		formData.append('element_branch', this.elementParentId);
 		var xhr = this.getXMLHttpRequest();
 		xhr.open("PUT", "http://" + location.host + "/elements/" + this.id, true);
 		xhr.setRequestHeader('Accept', 'application/json');
@@ -66,7 +66,7 @@ var Element = function() {
 	};
 	this.setClass = function() {
 		var div = document.getElementById(this.name + this.id);
-		div.className = "item-element";
+		div.className = "element";
 	};
 };
 
