@@ -45,7 +45,7 @@ window.onload = function() {
       $(this).hide();
     }
     if($(this).parent().find('.slide').css('left') == '-204px'){
-      $('.after').show();
+      $(this).parent().find('.after').show();
     }
   });
 
