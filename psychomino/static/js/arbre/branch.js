@@ -40,9 +40,6 @@ var Branch = function() {
 		this.setClass();
 		this.setLink();
 		jsPlumb.repaintEverything();
-		this.addElement(this.id);
-		this.addElement(this.id);
-		this.addElement(this.id);
 	};
 	this.sendUpdate = function(text) {
 		var formData = new FormData();
@@ -65,6 +62,7 @@ var Branch = function() {
 		var div = document.getElementById(this.name + this.id);
 		a.className = "btn add branchAdd";
 		a.innerHTML = "+";
+		a.id = "addButton" + this.id;
 		var b = document.createElement('a');
 		b.className = "btn delete item";
 		b.innerHTML = "x";
@@ -86,11 +84,27 @@ var Branch = function() {
         <a href="#" class="btn delete item">x</a>*/
 	};
 	this.addEventsButtons = function() {
+		var this2 = this;
 		var d = document.getElementById("deleteButton" + this.id);
 		d.addEventListener('click', function() {
 			jsPlumb.detachAllConnections(d.parentNode);
 			d.parentNode.parentNode.parentNode.removeChild(d.parentNode.parentNode);
 			jsPlumb.repaintEverything();
+			var xhr = this2.getXMLHttpRequest();
+			xhr.open("DELETE", "http://" + location.host + "/branches/" + this2.id, true);
+			xhr.setRequestHeader('Accept', 'application/json');
+			xhr.send();
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState == 4) {
+					if(xhr.status != 204) {
+						alert('Impossible de supprimer la branche !');
+					}
+				}
+			};
+		});
+		var a = document.getElementById("addButton" + this.id);
+		a.addEventListener('click', function() {
+			this2.addElement(this.id);
 		});
 	};
 	this.setClass = function() {

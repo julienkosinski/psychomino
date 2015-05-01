@@ -40,10 +40,8 @@ var Trunk = function() {
 		this.addDivNode();
 		this.addDivChildren();
 		this.addButtons();
+		this.addEventButtons();
 		this.setClass();
-		this.addBranch(this.id);
-		this.addBranch(this.id);
-		this.addBranch(this.id);
 	};
 	this.sendUpdate = function(text) {
 		var formData = new FormData();
@@ -65,7 +63,15 @@ var Trunk = function() {
 		var div = document.getElementById(this.name + this.id);
 		a.innerHTML = "+";
 		a.className = "btn add branchAdd";
+		a.id = "addButton" + this.id;
 		div.appendChild(a);
+	};
+	this.addEventButtons = function() {
+		var this2 = this;
+		var a = document.getElementById("addButton" + this.id);
+		a.addEventListener('click', function() {
+			this2.addBranch(this.id);
+		});
 	};
 	this.setClass = function() {
 		var div = document.getElementById(this.name + this.id);

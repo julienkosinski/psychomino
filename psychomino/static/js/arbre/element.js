@@ -64,11 +64,23 @@ var Element = function() {
 		div.insertBefore(c,document.getElementById(this.id + "content"));
 	};
 	this.addEventsButtons = function() {
+		var this2 = this;
 		var d = document.getElementById("deleteButton" + this.id);
 		d.addEventListener('click', function() {
 			jsPlumb.detachAllConnections(d.parentNode);
 			d.parentNode.parentNode.removeChild(d.parentNode);
 			jsPlumb.repaintEverything();
+			var xhr = this2.getXMLHttpRequest();
+			xhr.open("DELETE", "http://" + location.host + "/elements/" + this2.id, true);
+			xhr.setRequestHeader('Accept', 'application/json');
+			xhr.send();
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState == 4) {
+					if(xhr.status != 204) {
+						alert('Impossible de supprimer la branche !');
+					}
+				}
+			};
 		});
 	};
 	this.setClass = function() {
