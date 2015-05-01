@@ -213,56 +213,95 @@ article div.search form input{
     margin: 5px 0;
 }
 
-.tree
-{
+/*   TREE   */
+.tree{
     overflow: auto;
     white-space: nowrap;
+    margin: 20px 0;
+    padding: 30px;
+    margin-top: 70px;
+    border: 1px solid #FDDDE4;
 }
-.contentTrunk, .contentBranch
-{
+.contentTrunk, .contentBranch{
     text-align: center;
 }
-.grow
-{
+.elementType{
+/*    overflow: auto;
+    width: 180px;
+    height: 120px;*/
+    display: inline-block;
+    margin: 0 30px;
+}
+.grow{
     display: inline-block;
 }
-.branch, .element
-{
+.branch, .element{
     margin : 60px auto 0 auto;
     display: inline-block;
 }
-.trunk
-{
-    margin : 0 auto 0 auto;
+.trunk{
+    margin : 0 auto;
 }
-.trunk, .branch, .element
-{
-    background: #f23d5e;
+.trunk, .branch, .element{ 
+    background: #f23d5e;  
     text-align:center;
     color:#f3ddd0;
+    width: 180px; 
+    height: 60px;
+    position: relative;
 }
-.trunk, .branch, .element
-{
-    width: 180px; height: 60px;
+.trunk{background: #a72146;}
+.branch{background: #f23d5e;}
+.element{background: #fbc4ce; color: black;}
+
+.trunk a, .branch a, .element a{
+    background: #a72146;
+    border-radius: 11px;
+    -webkit-border-radius: 11px; 
+    -moz-border-radius: 11px;
 }
-.trunk .value, .branch .value
-{
+
+.trunk a{background: #fbc4ce; color: #a72146;}
+.branch a{background: #a72146;}
+.element a{background: #f23d5e;}
+
+.branch a.delete, .element a.delete{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    padding: 2px 9px 3px 8px;
+}
+.trunk a.hide, .branch a.hide{
+    padding: 0 9px 1px 9px;
+}
+.trunk a.add, .branch a.add{
+    padding: 0 7px 1px 7px;
+}
+.trunk .value, .branch .value{
     height: 42px;
-    margin: auto 5px auto 5px;
-    line-height:42px;
+    margin: auto 5px;
+    line-height: 42px;
 }
-.valueInput
-{
+.valueInput{
     width: calc(100% - 14px);
     text-align: center;
     height:30px;
     line-height: 30px;
     margin: 5px 5px auto 5px;
 }
-.branchAdd, .branch-items {margin-top: 110px;}
-.shortText{width: 52px; height: 52px;}
-.shortText .value{width: 46px; height: 46px; margin: 3px 0 0 3px;}
-
+.branchAdd, .branch-items {
+    margin-top: 110px;
+}
+.shortText{
+    width: 52px; 
+    height: 52px;
+}
+.shortText .value{
+    width: 46px; 
+    height: 46px; 
+    margin: 3px 0 0 3px;
+}
 .longText{width: 166px; height: 128px;}
 .longText .value{width: 156px; height: 118px; margin: 5px 0 0 5px;}
 
@@ -275,3 +314,9 @@ article div.search form input{
 .workspace .delete{  color: white; background: #a72146;}
 .workspace .right{}
 .workspace .left{}
+
+
+/*   TOOGLE   */
+.marginTruck{
+    margin-bottom: 244px;
+}
