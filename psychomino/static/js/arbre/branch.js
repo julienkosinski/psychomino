@@ -36,6 +36,7 @@ var Branch = function() {
 		this.addDivNode();
 		this.addDivChildren();
 		this.addButtons();
+		this.addEventsButtons();
 		this.setClass();
 		this.setLink();
 		jsPlumb.repaintEverything();
@@ -62,15 +63,35 @@ var Branch = function() {
 	this.addButtons = function() {
 		var a = document.createElement('a');
 		var div = document.getElementById(this.name + this.id);
-		a.className = "btn add item";
+		a.className = "btn add branchAdd";
+		a.innerHTML = "+";
 		var b = document.createElement('a');
-		b.className = "btn delete branchAdd";
-		b.innerHTML = "X";
+		b.className = "btn delete item";
+		b.innerHTML = "x";
+		b.id = "deleteButton" + this.id;
 		var c = document.createElement('a');
-		c.className = "btn toggle";
-		div.parentNode.insertBefore(b,div);
+		c.className = "btn show branchHide";
+		c.innerHTML = "↓"
+		c.style.display = "none";
+		var d = document.createElement('a');
+		d.className = "btn hide branchHide";
+		d.innerHTML = "↑";
+		div.insertBefore(b,document.getElementById(this.id + "content"));
 		div.appendChild(a);
+		div.appendChild(d);
 		div.appendChild(c);
+		/*<a href="#" class="btn add branchAdd">+</a>
+        <a href="#" class="btn hide branchHide">↑</a>
+        <a href="#" class="btn show branchHide">↓</a>
+        <a href="#" class="btn delete item">x</a>*/
+	};
+	this.addEventsButtons = function() {
+		var d = document.getElementById("deleteButton" + this.id);
+		d.addEventListener('click', function() {
+			jsPlumb.detachAllConnections(d.parentNode);
+			d.parentNode.parentNode.parentNode.removeChild(d.parentNode.parentNode);
+			jsPlumb.repaintEverything();
+		});
 	};
 	this.setClass = function() {
 		var div = document.getElementById(this.name + this.id);

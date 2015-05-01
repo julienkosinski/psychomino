@@ -27,8 +27,8 @@ var Element = function() {
 	};
 	this.callback = function() {
 		this.addDivNode();
-		//this.addDivChildren();
-		//this.addButtons();
+		this.addButtons();
+		this.addEventsButtons();
 		this.setClass();
 		this.setLink()
 	};
@@ -59,10 +59,17 @@ var Element = function() {
 		a.innerHTML = ">";
 		var c = document.createElement('a');
 		c.className = "btn delete item";
+		c.id = "deleteButton" + this.id;
 		c.innerHTML = "X";
-		div.parentNode.insertBefore(b,div);
-		div.parentNode.insertBefore(a, div);
-		div.parentNode.insertBefore(c, div);
+		div.insertBefore(c,document.getElementById(this.id + "content"));
+	};
+	this.addEventsButtons = function() {
+		var d = document.getElementById("deleteButton" + this.id);
+		d.addEventListener('click', function() {
+			jsPlumb.detachAllConnections(d.parentNode);
+			d.parentNode.parentNode.removeChild(d.parentNode);
+			jsPlumb.repaintEverything();
+		});
 	};
 	this.setClass = function() {
 		var div = document.getElementById(this.name + this.id);

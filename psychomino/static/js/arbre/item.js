@@ -1,5 +1,6 @@
 var Item = function() {
 	this.id = null;
+	this.link = null;
 	this.parent = null;
 	this.elementParentId = null;
 	this.elementParent;
@@ -20,7 +21,7 @@ var Item = function() {
 		    anchor: "BottomCenter"
 	  	});
 
-		jsPlumb.connect(
+		this.link = jsPlumb.connect(
 			{
 				source:source,
 				target:target,
