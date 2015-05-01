@@ -7,7 +7,6 @@ window.onload = function() {
 
 $(document).on('click', 'a.hide.truckHide', function() {
   $('.contentTrunk').toggle();
-  $(this).parent().toggleClass("marginTruck");
 });
 
 $(document).on('click', 'a.hide.branchHide', function() {

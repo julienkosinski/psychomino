@@ -293,14 +293,8 @@ article div.search form input{
 .branchAdd, .branch-items {
     margin-top: 110px;
 }
-.shortText{
-    width: 52px; 
-    height: 52px;
-}
-.shortText .value{
-    width: 46px; 
-    height: 46px; 
-    margin: 3px 0 0 3px;
+.shortText{width: 52px; height: 52px;}
+.shortText .value{width: 46px; height: 46px; margin: 3px 0 0 3px;
 }
 .longText{width: 166px; height: 128px;}
 .longText .value{width: 156px; height: 118px; margin: 5px 0 0 5px;}
@@ -314,9 +308,3 @@ article div.search form input{
 .workspace .delete{  color: white; background: #a72146;}
 .workspace .right{}
 .workspace .left{}
-
-
-/*   TOOGLE   */
-.marginTruck{
-    margin-bottom: 244px;
-}
