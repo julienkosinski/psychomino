@@ -272,8 +272,9 @@ article div.search form input{
     font-size: 12px;
     padding: 2px 9px 3px 8px;
 }
-.trunk a.hide, .branch a.hide{
-    padding: 0 9px 1px 9px;
+.branch a.branchHide{
+    padding: 2px 7.5px 2px 7.5px;
+    font-size: 14px;
 }
 .trunk a.add, .branch a.add{
     padding: 0 7px 1px 7px;
