@@ -319,18 +319,18 @@ article div.search form input{
 
 .before{
     cursor: pointer;
-    position: absolute;
-    left: 2px;
-    display: none;
     z-index: 100;
-    margin-top: 50px;    
+    display: none;
+    position: relative;
+    top: 7px;
+    left: -10px;
 }
 .after{
     cursor: pointer;
-    position: absolute;
-    right: 0;
     z-index: 100;
-    margin-top: 50px;
+    position: relative;
+    top: 7px;
+    left: -10px;
 }
 a.choice{
     background: #f23d5e;
@@ -339,8 +339,9 @@ a.choice{
     border-radius: 11px;
     -webkit-border-radius: 11px;
     -moz-border-radius: 11px;
-    position: absolute;
-    left: 75px;
+    position: relative;
+    top: 50px;
+    left: -145px;
     cursor: pointer;
 }
 
