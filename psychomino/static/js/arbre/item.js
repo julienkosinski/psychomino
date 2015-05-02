@@ -123,7 +123,7 @@ var Item = function() {
 
 	};
 	this.setContent = function(text) {
-
+		this.content = text;
 		var p = document.createElement('p');
 		p.innerHTML = text;
 		p.id = this.id + "content";

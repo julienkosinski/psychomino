@@ -25,12 +25,44 @@ var Element = function() {
 			}
 		}
 	};
+	this.addDivNode = function() {
+
+		var div = document.createElement('div');
+		div.className = "elementType";
+		var span1 = document.createElement('span');
+		span1.id = "left" + this.id;
+		span1.className = "before";
+		div.appendChild(span1);
+		var img1 = document.createElement('img');
+		img1.src = "static/img/left.png";
+		img1.alt = "left";
+		span1.appendChild(img1);
+		var div2 = document.createElement('div');
+		div2.id = this.name + this.id;
+		div2.className = "element";
+		div.appendChild(div2);
+		var a = document.createElement('a');
+		a.href = "#";
+		a.innerHTML = "x";
+		a.id = "deleteButton" + this.id;
+		a.className = "btn delete item";
+		div2.appendChild(a);
+		var span2 = document.createElement('span');
+		span2.id = "right" + this.id;
+		span2.className = "after";
+		div.appendChild(span2);
+		var img2 = document.createElement('img');
+		img2.src = "static/img/right.png";
+		img2.alt = "right";
+		span2.appendChild(img2);
+
+		document.getElementById(this.parent).appendChild(div);
+		this.setContent('Image');
+	};
 	this.callback = function() {
 		this.addDivNode();
-		this.addButtons();
 		this.addEventsButtons();
-		this.setClass();
-		this.setLink()
+		this.setLink();
 	};
 	this.sendUpdate = function(text) {
 		var formData = new FormData();
@@ -49,20 +81,6 @@ var Element = function() {
 			}
 		}
 	};
-	this.addButtons = function() {
-		var a = document.createElement('a');
-		var div = document.getElementById(this.name + this.id);
-		a.className = "left";
-		a.innerHTML = "<";
-		var b = document.createElement('a');
-		b.className = "right";
-		a.innerHTML = ">";
-		var c = document.createElement('a');
-		c.className = "btn delete item";
-		c.id = "deleteButton" + this.id;
-		c.innerHTML = "X";
-		div.insertBefore(c,document.getElementById(this.id + "content"));
-	};
 	this.addEventsButtons = function() {
 		var this2 = this;
 		var d = document.getElementById("deleteButton" + this.id);
@@ -77,15 +95,11 @@ var Element = function() {
 			xhr.onreadystatechange = function() {
 				if(xhr.readyState == 4) {
 					if(xhr.status != 204) {
-						alert('Impossible de supprimer la branche !');
+						alert('Impossible de supprimer l\'element !');
 					}
 				}
 			};
 		});
-	};
-	this.setClass = function() {
-		var div = document.getElementById(this.name + this.id);
-		div.className = "element";
 	};
 };
 

@@ -58,6 +58,15 @@ var Trunk = function() {
 			}
 		};
 	};
+	this.setContent = function(text) {
+
+		var p = document.createElement('p');
+		p.innerHTML = text;
+		p.id = this.id + "content";
+		p.className = "value";
+		document.getElementById(this.name + this.id).appendChild(p);
+
+	};
 	this.addButtons = function() {
 		var a = document.createElement('a');
 		var div = document.getElementById(this.name + this.id);
