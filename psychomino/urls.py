@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^contact/', 'psychomino.views.contact'),
     url(r'^(?P<pk>\d+)$', 'psychomino.views.home'),
     # url(r'^blog/', include('blog.urls')),
+    url(r'^getSvg/', 'psychomino.views.getSvg'),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(router.urls, namespace='api')),

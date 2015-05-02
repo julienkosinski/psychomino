@@ -11,6 +11,16 @@ var shortTextConstArray = {width: 18, height: 18};
 var	svgX = 0;
 var	svgY = 0;
 
+var container = document.createElement('div');
+container.setAttribute('id', 'svg-all');
+/*container.style.visibility = 'hidden';
+container.style.overflow = 'hidden';
+container.style.height = '0px';*/
+document.body.appendChild(container);
+
+
+var svg = document.createElementNS(svgNS, "svg");
+
 $('.generate button').on('click', function(){
 	generateDocuments($(this).val());
 })
@@ -33,21 +43,29 @@ function generateDocuments(documentType){
 		fileH = pdfConstArray['height'];
 	}
 
-	var svg = document.createElementNS(svgNS, "svg");
 	svg.setAttribute('id', 'svg-'+svgId);
+	svg.setAttribute('width', fileW+'mm');
+	svg.setAttribute('height', fileH+'mm');
 
 	branches = getAllElementsValue('.branch .value');
 	branchH = branchesConstArray['height'];
 	branchW = branchesConstArray['width'];
 
-	svg = generateBlocs(branches, fileW, fileH, branchW, branchH, svg);
+	if(branches.length <= 0){
+		throw new Error("Please insert at least one branch!");
+	}
+
+	generateBlocs(branches, fileW, fileH, branchW, branchH);
 
 	images = getAllElementsValue('.elementImage .value');
+	//images2 = $('.elementImage .value [href]');
+	//console.log(images2);
+
 	if(images.length > 0){
 
 		imgH = imagesConstArray['height'];
 		imgW = imagesConstArray['width'];
-		svg = generateBlocs(images, fileW, fileH, imgW, imgH, svg);
+		generateBlocs(images, fileW, fileH, imgW, imgH);
 		
 	}
 
@@ -56,7 +74,7 @@ function generateDocuments(documentType){
 
 		longTextH = longTextConstArray['height'];
 		longTextW = longTextConstArray['width'];
-		svg = generateBlocs(longTexts, fileW, fileH, longTextW, longTextH, svg);
+		generateBlocs(longTexts, fileW, fileH, longTextW, longTextH);
 
 	}
 
@@ -65,11 +83,13 @@ function generateDocuments(documentType){
 
 		littleTextH = shortTextConstArray['height'];
 		littleTextW = shortTextConstArray['width'];
-		svg = generateBlocs(littleTexts, fileW, fileH, littleTextW, littleTextH, svg);
+		generateBlocs(littleTexts, fileW, fileH, littleTextW, littleTextH);
 		
 	}
 	if(svg.children.length > 0){
-		document.body.appendChild(svg);
+		document.getElementById("svg-all").appendChild(svg);
+		mergeTextWithRect();
+		sendPlainSvgToBackend();
 	}
 }
 
@@ -101,34 +121,93 @@ function resetPosition(elem)
 	}
 }
 
-function generateBlocs(contents, fileW, fileH, elemW, elemH, svg)
+function generateBlocs(contents, fileW, fileH, elemW, elemH)
 {
-	for(var key in contents){
-		if(testPlacementBloc(fileW, fileH, elemW, elemH) == true){
-			// TODO : SVG CREATION BLOCK
-			// file x actual placement = svgX & file Y actal placement = svgY
-			// text content = contents[key]
-			// elem width = elemW & elem height = elemH
-
-			//OBLIGATORY PART
-			svgX = svgX + elemW;
-		}
-		else{
-			document.body.appendChild(svg);
+	//console.log(contents);
+	contents.forEach(function(content){
+		if(testPlacementBloc(fileW, fileH, elemW, elemH) == false){
+			document.getElementById("svg-all").appendChild(svg);
 			svgId = svgId + 1;
 			console.log(svgId);
-			var svg = document.createElementNS(svgNS, "svg");
+
+			svg = document.createElementNS(svgNS, "svg");
 			svg.setAttribute('id', 'svg-'+svgId);
+			svg.setAttribute('width', fileW+'mm');
+			svg.setAttribute('height', fileH+'mm');
 
-			// TODO : SVG CREATION BLOCK
-			// file x actual placement = svgX & file Y actal placement = svgY
-			// text content = contents[key]
-			// elem width = elemW & elem height = elemH
-
-			//OBLIGATORY PART
-			svgX = svgX + elemW;
 		}
-	}
+		svg.innerHTML +=
+			'<rect class="shape" height="'+elemH+'mm" width="'+elemW+'mm" y="'+svgY+'mm" x="'+svgX+'mm" stroke="red" fill="white"></rect>'+
+			'<text class="wrap contentSvg" y="'+svgY+'mm" x="'+svgX+'mm" font-size="12">'+
+			content+
+			'</text>';
+
+		svgX = svgX + elemW;
+	});
 	resetPosition(elemH);
-	return svg;
+}
+
+function mergeTextWithRect()
+{
+	// !!!!!!!!!!!!!
+	// DOES NOT WORK, WHY ???!!!
+	
+	d3plus.textwrap()
+					.container(d3.select(".contentSvg"))
+					.resize(true)
+					.draw();
+	// !!!!!!!!!!!!!
+}
+
+function sendPlainSvgToBackend()
+{
+	// Does not wrap <svg> tag... :'(.
+	// Need to create another div if we want to do so. Else, send all svg in one block an manage it server side.
+	var allSvgTemp = document.getElementsByTagName("svg");
+	allSvgTemp = Array.prototype.slice.call(allSvgTemp);
+	var svgAll = [];
+	allSvgTemp.forEach(function(aSvg,index){
+		svgAll.push(aSvg.innerHTML);
+	});
+	console.log(svgAll);
+	
+	var csrftoken = getCookie('csrftoken');
+	
+	$.ajaxSetup({
+	    beforeSend: function(xhr, settings) {
+	        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+	            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+	        }
+	    }
+	});
+
+	// !!! Will need a limit of datas to prevent from problems... !!!
+	$.ajax({
+		url: "getSvg/",
+		method: "POST",
+		data: { svgAll : svgAll }
+	});
+	//allSvgString.outerHTML = "";
+	//delete allSvgString;
+}
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }

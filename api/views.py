@@ -17,47 +17,6 @@ class LessonViewSet(viewsets.ModelViewSet):
     serializer_class = LessonSerializer
     renderer_classes = (JSONRenderer, TemplateHTMLRenderer)
 
-    # Old attemps, just keep it while I tests our last solution.
-    '''
-    def svg_create(self, datas):
-        # For a 12pt font in mm : 0,3759 * 12 = 4.5108mm     
-        json_test = """{
-                        "const": {
-                            "width": 45,
-                            "branches_height": 18
-                        },
-                        "elements_height_max": 20,
-                        "font_height_by_elements": {
-                            "element0": 4.5108,
-                            "element1": 4.8867,
-                            "element2": 5.2626,
-                            "element3": 4.5108
-                        }
-                    }"""
-        settings_blocks = json.loads(json_test)
-        base_width = settings_blocks['const']['width']
-        base_height = settings_blocks['const']['branches_height']
-        height_max = settings_blocks['elements_height_max']
-
-        svg_lasercut = svgwrite.Drawing(str(settings.PROJECT_ROOT)+'/static/test.svg', profile='tiny')
-        svg_lasercut.add(svg_lasercut.rect(0,0,base_width,height_max))
-        #svg_lasercut.add(svg_lasercut.text.TextArea(0,0,base_width,height_max))
-        svg_lasercut.save()
-
-    '''
-
-    def generate_blocks_from_front(self):
-        """
-            Generate and select the generated parts from d3js plus
-        """
-        self.svg_blocks_imposition()
-
-    def svg_blocks_imposition(self):
-        """
-            Select blocks we need and place its in the good order thanks to a packing binary algorithm (or a simple template).
-        """
-        pass
-
     @list_route(methods=['GET'])
     def search(self, request):
         search = request.QUERY_PARAMS.get('search', None)
@@ -77,15 +36,6 @@ class LessonViewSet(viewsets.ModelViewSet):
 
         if request.accepted_renderer.format == 'html':
             lesson = serializer.data
-            """branches = lesson['branches']
-            elements = list()
-            for branch in branches:
-                for (branch_key,branch_content) in branch.items():
-                    if branch_key == 'elements':
-                        for each_elements in branch_content:
-                            elements.append(each_elements)
-                    continue
-            lesson.pop('branches', None)"""
 
             if request.QUERY_PARAMS.get('format', None) == 'pdf':
                 # Then it is a A4 PDF to generate.

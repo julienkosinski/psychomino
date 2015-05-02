@@ -4,6 +4,7 @@ from django.shortcuts import render
 from psychomino.forms import ContactForm
 from django.core.mail import send_mail
 from django.shortcuts import redirect
+from django.http import Http404
 
 def init(request):
     return render(request, 'psychomino/index.html')
@@ -35,3 +36,14 @@ def contact(request):
         form = ContactForm()  # Nous créons un formulaire vide
 
     return render(request, 'psychomino/contact.html', locals())
+
+def getSvg(request):
+    if request.method == 'POST':
+        # !!! We don't sanitize data from client. That is bad practise !!! Need to be fix.
+        if request.POST.svgAll is None:
+            pass
+        else:
+            print(request.POST.svgAll);
+            #Need a response to avoid 500 error.
+    else:
+        raise Http404
