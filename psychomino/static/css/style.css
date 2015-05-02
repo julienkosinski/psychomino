@@ -249,7 +249,7 @@ article div.search form input{
 }
 .trunk{background: #a72146;}
 .branch{background: #f23d5e;}
-.element{background: #fbc4ce; color: black;}
+.element{background: #fbc4ce; color: black; margin-top: 30px;}
 
 .trunk a, .branch a, .element a{
     background: #a72146;
@@ -311,20 +311,13 @@ article div.search form input{
 /*  SILDER ELEMENT  */
 .elementType{
     margin: 30px 0;
-    overflow: hidden;
     width: 200px;
     height: 60px;
     position: relative;
     margin-top: 40px;
     padding-bottom: 30px;
 }
-.elementType .slide{
-    position: absolute;
-    width: 610px;
-    height: 120px;
-    bottom: 0;
-    left: 0;
-}
+
 .before{
     cursor: pointer;
     position: absolute;
