@@ -1,5 +1,5 @@
 var svgConstArray = {width: 2267.716536, height: 1511.811024};
-var pdfConstArray = {width: 1122.519685, height: 793.700787};
+var pdfConstArray = {width: 793.700787, height: 1122.519685};
 var svgNS = "http://www.w3.org/2000/svg"; 
 var	svgId = 0;
 
@@ -129,7 +129,7 @@ function generateImagesBlocs(contents, fileW, fileH, elemW, elemH, svg)
 		rect.setAttribute('width', elemW);
 		rect.setAttribute('height', elemH);
 		rect.setAttribute('fill', 'white');
-		rect.setAttribute('stroke', 'black');
+		rect.setAttribute('stroke', 'red');
 		rect.setAttribute('stroke-width', '1');
 		rect.setAttribute('x', svgX);
 		rect.setAttribute('y', svgY);
@@ -167,7 +167,7 @@ function generateBranchBlocs(contents, fileW, fileH, elemW, elemH, svg)
 		rect.setAttribute('width', elemW);
 		rect.setAttribute('height', elemH);
 		rect.setAttribute('fill', 'white');
-		rect.setAttribute('stroke', 'black');
+		rect.setAttribute('stroke', 'red');
 		rect.setAttribute('stroke-width', '1');
 		rect.setAttribute('x', svgX);
 		rect.setAttribute('y', svgY);
@@ -205,7 +205,7 @@ function generateTextBlocs(contents, fileW, fileH, elemW, elemH, svg)
 		rect.setAttribute('width', elemW);
 		rect.setAttribute('height', elemH);
 		rect.setAttribute('fill', 'white');
-		rect.setAttribute('stroke', 'black');
+		rect.setAttribute('stroke', 'red');
 		rect.setAttribute('stroke-width', '1');
 		rect.setAttribute('x', svgX);
 		rect.setAttribute('y', svgY);
@@ -243,7 +243,7 @@ function generateSmallTextBlocs(contents, fileW, fileH, elemW, elemH, svg)
 		rect.setAttribute('width', elemW);
 		rect.setAttribute('height', elemH);
 		rect.setAttribute('fill', 'white');
-		rect.setAttribute('stroke', 'black');
+		rect.setAttribute('stroke', 'red');
 		rect.setAttribute('stroke-width', '1');
 		rect.setAttribute('x', svgX);
 		rect.setAttribute('y', svgY);
@@ -287,9 +287,9 @@ function actionsBeforeHide(output_format)
 	    .draw();
 	};
 	submit_download_form(output_format);
-	$("svg").each(function(index){
-		$(this).hide();
-	})
+	for (var i = 0; i <= svgId; i++) {
+		$('#svg-'+i).hide();
+	};
 }
 
 function submit_download_form(output_format)

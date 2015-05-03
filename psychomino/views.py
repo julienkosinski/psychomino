@@ -5,6 +5,7 @@ from psychomino.forms import ContactForm
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 from django.http import Http404
+# from svglib.svglib import SvgRenderer
 from reportlab.graphics import renderPDF
 from reportlab.graphics import renderSVG
 from django.http import HttpResponse
