@@ -60,6 +60,7 @@ var Element = function() {
 		div.appendChild(br);
 		var a2 = document.createElement('a');
 		a2.className = "btn choice";
+		a2.id = "validate" + this.id;
 		a2.innerHTML = "Valider";
 		div.appendChild(a2);
 
@@ -183,6 +184,149 @@ var Element = function() {
 				this2.type = "Image";
 			}
 		});
+
+		var val = document.getElementById("validate" + this.id);
+		val.addEventListener('click', function() {
+			var e = document.getElementById("Element" + this2.id);
+			if(this2.type == "PetitTexte")
+			{
+				var inp = document.getElementById('inpContent' + this2.id);
+				var text = inp.value;
+				e.removeChild(inp);
+				var p = document.createElement('p');
+				p.innerHTML = text;
+				p.className = "value";
+				p.id = this2.id + "content";
+				e.appendChild(p);
+			}
+			else if(this2.type == "GrandTexte") {
+				var textarea = document.getElementById("textareaContent" + this2.id);
+				var text = textarea.innerHTML;
+				e.removeChild(textarea);
+				var p = document.createElement("p");
+				p.innerHTML = text;
+				p.className = "value";
+				p.id = this2.id + "content";
+				e.appendChild(p);
+			}
+			e.parentNode.removeChild(document.getElementById("left" + this2.id));
+			e.parentNode.removeChild(document.getElementById("right" + this2.id));
+			this2.addEvents(document.getElementById(this2.name + this2.id));
+		});
+	};
+
+	this.addEvents = function(div) {
+		var this2 = this;
+		console.log("ok2");
+		if(this.type == "PetitTexte")
+		{
+			if(div.addEventListener) {
+				div.addEventListener('dblclick', function() {
+					console.log("ok");
+					var p = document.getElementById(this2.id + "content");
+					var pText = p.innerHTML;
+					div.removeChild(p);
+					var inp = document.createElement("input");
+					inp.type = "text";
+					inp.value = pText;
+					inp.id = "inpContent" + this2.id;
+					inp.className = "valueInput";
+					div.insertBefore(inp, div.firstChild);
+					inp.focus();
+
+					inp.addEventListener('blur', function() {
+
+						var val = inp.value;
+						var p2 = document.createElement('p');
+						p2.innerHTML = val;
+						p2.id = this2.id + "content";
+						p2.className = "value";
+						div.insertBefore(p2, div.firstChild);
+						div.removeChild(inp);
+						this2.sendUpdate(val);
+					});
+				});
+			}
+			else {
+				div.attachEvent('ondblclick', function() {
+					var p = document.getElementById(this2.id + "content");
+					var pText = p.innerHTML;
+					div.removeChild(p);
+					var inp = document.createElement("input");
+					inp.type = "text";
+					inp.value = pText;
+					inp.id = "inpContent";
+					inp.className = "valueInput";
+					div.insertBefore(inp, div.firstChild);
+					inp.focus();
+					inp.addEvent('onblur', function() {
+						var val = inp.value;
+						var p2 = document.createElement('p');
+						p2.innerHTML = val;
+						p2.id = this2.id + "content";
+						p2.className = "value";
+						div.insertBefore(p2, div.firstChild);
+						div.removeChild(inp);
+						this2.sendUpdate(val);
+					});
+				});
+			}
+		}
+		else if(this.type == "GrandTexte")
+		{
+			if(div.addEventListener) {
+				div.addEventListener('dblclick', function() {
+					var p = document.getElementById(this2.id + "content");
+					var pText = p.innerHTML;
+					div.removeChild(p);
+					var inp = document.createElement("textarea");
+					inp.innerHTML = pText;
+					inp.id = "textareaContent" + this2.id;
+					inp.className = "textareaContent";
+					inp.rows = 3;
+					inp.cols = 18;
+					div.appendChild(inp);
+					inp.focus();
+
+					inp.addEventListener('blur', function() {
+
+						var val = inp.innerHTML;
+						var p2 = document.createElement('p');
+						p2.innerHTML = val;
+						p2.id = this2.id + "content";
+						p2.className = "value";
+						div.appendChild(p2);
+						div.removeChild(inp);
+						this2.sendUpdate(val);
+					});
+				});
+			}
+			else {
+				div.attachEvent('ondblclick', function() {
+					var p = document.getElementById(this2.id + "content");
+					var pText = p.innerHTML;
+					div.removeChild(p);
+					var inp = document.createElement("textarea");
+					inp.innerHTML = pText;
+					inp.id = "textareaContent" + this2.id;
+					inp.className = "textareaContent";
+					inp.rows = 3;
+					inp.cols = 18;
+					div.appendChild(inp);
+					inp.focus();
+					inp.addEvent('onblur', function() {
+						var val = inp.innerHTML;
+						var p2 = document.createElement('p');
+						p2.innerHTML = val;
+						p2.id = this2.id + "content";
+						p2.className = "value";
+						div.appendChild(p2);
+						div.removeChild(inp);
+						this2.sendUpdate(val);
+					});
+				});
+			}
+		}
 	};
 };
 
