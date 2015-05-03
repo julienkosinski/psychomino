@@ -78,12 +78,16 @@ window.onload = function() {
           trunk.parent = "tree";
           trunk.parentId = "tree";
           trunk.id = lessonId;
-
+          trunk.content = response.lesson_title;
           trunk.addDivNode();
           trunk.addDivChildren();
           trunk.addButtons();
           trunk.addEventButtons();
           trunk.setClass();
+
+          for (var i = 0; i < response.branches.length; i++) {
+            response.branches[i]
+          };
         }
         else {
           alert('Impossible de récupérer la leçon !');
