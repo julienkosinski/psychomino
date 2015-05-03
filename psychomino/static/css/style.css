@@ -156,6 +156,11 @@ article div.search form input{
     position: relative;
     background:url(../img/form.png) no-repeat #cedef2 5px;
 }
+.search-link{
+    font-size: 24px;
+    font-family: 'open-sans-bold' !important;
+    color: #a62046 !important;
+}
 
 /*   SHARE   */
 .share p{
