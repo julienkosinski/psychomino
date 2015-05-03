@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html xmlns="http://www.w3.org/1999/html">
+	<head lang="en">
+        <meta charset="UTF-8">
+		<title> Rasterizer </title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/rasterizer/style.css' %}">
+	</head>
+
+	<body>
+		<canvas id='canvas'></canvas>
+
+		<script type="text/javascript" src="../static/lib/rasterizer/Rasterizer.js"></script>
+		<script type="text/javascript" src="../static/lib/rasterizer/dat.gui.min.js"></script>
+		<script>
+			Rasterizer.init();
+			var gui = new dat.GUI();
+			gui.add(Rasterizer, 'uploadImage').name( 'Upload' );
+			gui.add(Rasterizer, 'intensity', 0.2, 3 ).onChange( function(value) { Rasterizer.draw() } );
+			gui.add(Rasterizer, 'save').name( 'Valider' );
+		</script>
+	</body>
+</html>

@@ -7,9 +7,11 @@ window.onload = function() {
 		jsPlumb.repaintEverything();
 	});
 
+  $(".image").colorbox({iframe:true, width:"50%", height:"70%"});
+  
   $('a.show.branchHide').hide();
-   
-   $(document).on('click', 'a.hide.branchHide', function() {
+
+  $(document).on('click', 'a.hide.branchHide', function() {
     $(this).parent().next().toggle();
     $(this).parent().next().css('display', 'none');
     $(this).hide();

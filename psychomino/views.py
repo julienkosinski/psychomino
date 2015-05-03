@@ -15,6 +15,9 @@ def home(request, pk):
 def rules(request):
     return render(request, 'psychomino/rules.html')
 
+def rasterizer(request):
+    return render(request, 'psychomino/rasterizer.html')
+
 def contact(request):
     if request.method == 'POST':  # S'il s'agit d'une requête POST
         form = ContactForm(request.POST)  # Nous reprenons les données

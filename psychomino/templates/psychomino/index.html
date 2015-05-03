@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <title>Pyschomino</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/colorbox/colorbox.css' %}">
     </head>
 	<body>
         <header>
@@ -44,7 +45,7 @@
                                     <span class="before"><img src="{% static 'img/left.png' %}" alt="left"></span>
                                         <div class="element">
                                             <a href="#" class="btn delete item">x</a>
-                                            <p class="value">Image</p>
+                                            <p class="value"><a class="image" href="/rasterizer">Image</a></p>
                                         </div>
                                     <span class="after"><img src="{% static 'img/right.png' %}" alt="right"></span>
                                     <a class="btn choice">Valider</a>
@@ -130,6 +131,7 @@
         <script type="text/javascript" src="static/js/arbre/branch.js"></script>
         <script type="text/javascript" src="static/js/arbre/element.js"></script>
         <script type="text/javascript" src="static/js/arbre/app.js"></script>
+        <script type="text/javascript" src="static/lib/colorbox/jquery.colorbox-min.js"></script>
         <script type="text/javascript" src="static/lib/jsPlumbOld/jquery.jsPlumb-1.4.1-all-min.js"></script>
         <script type="text/javascript" src="static/lib/jquery-ui-1.11.4/jquery-ui.min.js"></script>
         <script type="text/javascript" src="static/lib/d3/d3.min.js"></script>
