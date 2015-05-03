@@ -315,6 +315,7 @@ article div.search form input{
     height: 60px;
     margin-top: 40px;
     padding-bottom: 30px;
+    display: inline-block;
 }
 
 .before{
