@@ -22,3 +22,5 @@ django-floppyforms==1.2.0
 djangorestframework==3.0
 pytz==2014.7
 pillow==2.7.0
+svglib==0.6.3
+reportlab

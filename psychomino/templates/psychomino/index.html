@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <title>Pyschomino</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/colorbox/colorbox.css' %}">
     </head>
 	<body>
         <header>
@@ -31,29 +32,12 @@
                     <div class="contentTrunk">
 
                         <div class="grow">
-                            <div class="branch">
-                                <a href="#" class="btn delete item">x</a>
-                                <p class="value">Branche</p>
-                                <a href="#" class="btn add branchAdd">+</a>
-                                <a href="#" class="btn hide branchHide">↑</a>
-                                <a href="#" class="btn show branchHide">↓</a>
-                            </div>
-
                             <div class="contentBranch">
                                 <div class="elementType">
                                     <span class="before"><img src="{% static 'img/left.png' %}" alt="left"></span>
                                         <div class="element">
                                             <a href="#" class="btn delete item">x</a>
-                                            <p class="value">Image</p>
-                                        </div>
-                                    <span class="after"><img src="{% static 'img/right.png' %}" alt="right"></span>
-                                    <a class="btn choice">Valider</a>
-                                </div>
-                                <div class="elementType">
-                                    <span class="before"><img src="{% static 'img/left.png' %}" alt="left"></span>
-                                        <div class="element">
-                                            <a href="#" class="btn delete item">x</a>
-                                            <p class="value">Image</p>
+                                            <p class="value"><a class="image" href="/rasterizer">Upload une image</a></p>
                                         </div>
                                     <span class="after"><img src="{% static 'img/right.png' %}" alt="right"></span>
                                     <a class="btn choice">Valider</a>
@@ -62,16 +46,7 @@
                         </div>
 
 
-<!--                         <div class="grow">
-                            <div class="branch">
-                                <a href="#" class="btn delete item">x</a>
-                                <p class="value">Branche</p>
-                                <a href="#" class="btn add branchAdd">+</a>
-                                <a href="#" class="btn hide branchHide">↑</a>
-                                <a href="#" class="btn show branchHide">↓</a>
-                            </div>
-
-                            <div class="contentBranch">
+                        <!--<div class="contentBranch">
                                 <div class="elementType">
                                     <span class="before"><img src="{% static 'img/left.png' %}" alt="left"></span>
                                     <div class="slide">
@@ -122,7 +97,11 @@
 		    </p>
 		    <p>Copyright 2015</p>
 		</footer>
-        <script type="text/javascript" src="static/js/jquery-1.10.2.min.js"></script>
+        <form id="svgform" method="post" action="{% url "psychomino.views.exportsvg" %}">{% csrf_token %}
+            <input type="hidden" id="output_format" name="output_format" value="">
+            <input type="hidden" id="data" name="data" value="">
+        </form>
+        <script type="text/javascript" src="static/lib/jquery/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="static/js/arbre/app.js"></script>
         <script type="text/javascript" src="static/js/arbre/generation.js"></script>
         <script type="text/javascript" src="static/js/arbre/item.js"></script>
@@ -130,7 +109,11 @@
         <script type="text/javascript" src="static/js/arbre/branch.js"></script>
         <script type="text/javascript" src="static/js/arbre/element.js"></script>
         <script type="text/javascript" src="static/js/arbre/app.js"></script>
+        <script type="text/javascript" src="static/lib/colorbox/jquery.colorbox-min.js"></script>
         <script type="text/javascript" src="static/lib/jsPlumbOld/jquery.jsPlumb-1.4.1-all-min.js"></script>
         <script type="text/javascript" src="static/lib/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="static/lib/d3/d3.min.js"></script>
+        <script type="text/javascript" src="static/lib/d3/d3plus.full.min.js"></script>
+        <script type="text/javascript" src="static/lib/innersvg.min.js"></script>
 	</body>
 </html>

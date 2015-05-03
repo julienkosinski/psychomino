@@ -363,3 +363,21 @@ a.choice{
     margin-left: 3px;
     margin-top: 3px;
 }
+
+/*  POPUP  */
+.element a.image{
+    background: none;
+    color: #111;
+}
+.element a.image:hover{
+    text-decoration: underline;
+}
+#cboxOverlay{
+    background: #333 !important;
+}
+#cboxTopLeft, #cboxTopCenter, #cboxTopRight, #cboxMiddleLeft, #cboxMiddleRight, #cboxBottomLeft, #cboxBottomCenter, #cboxBottomRight{
+    background: #FFF !important;
+}
+#cboxClose{
+    top: 0 !important; 
+}
