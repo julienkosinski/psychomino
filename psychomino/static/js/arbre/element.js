@@ -240,7 +240,7 @@ var Element = function() {
 						var p2 = document.createElement('p');
 						p2.innerHTML = val;
 						p2.id = this2.id + "content";
-						p2.className = "value";
+						p2.className = "value petitTexte";
 						div.insertBefore(p2, div.firstChild);
 						div.removeChild(inp);
 						this2.sendUpdate(val);
@@ -264,7 +264,7 @@ var Element = function() {
 						var p2 = document.createElement('p');
 						p2.innerHTML = val;
 						p2.id = this2.id + "content";
-						p2.className = "value";
+						p2.className = "value petitTexte";
 						div.insertBefore(p2, div.firstChild);
 						div.removeChild(inp);
 						this2.sendUpdate(val);
@@ -294,7 +294,7 @@ var Element = function() {
 						var p2 = document.createElement('p');
 						p2.innerHTML = val;
 						p2.id = this2.id + "content";
-						p2.className = "value";
+						p2.className = "value grandTexte";
 						div.appendChild(p2);
 						div.removeChild(inp);
 						this2.sendUpdate(val);
@@ -319,7 +319,7 @@ var Element = function() {
 						var p2 = document.createElement('p');
 						p2.innerHTML = val;
 						p2.id = this2.id + "content";
-						p2.className = "value";
+						p2.className = "value grandTexte";
 						div.appendChild(p2);
 						div.removeChild(inp);
 						this2.sendUpdate(val);
