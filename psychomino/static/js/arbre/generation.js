@@ -61,7 +61,7 @@ function generateDocuments(documentType){
 		
 	}
 
-	longTexts = getAllElementsValue('.elementLongText .value');
+	longTexts = getAllElementsValue('.grandTexte');
 	if(longTexts.length > 0){
 
 		longTextH = longTextConstArray['height'];
@@ -70,7 +70,7 @@ function generateDocuments(documentType){
 
 	}
 
-	littleTexts = getAllElementsValue('.elementLittletext .value');
+	littleTexts = getAllElementsValue('.petitTexte');
 	if(littleTexts.length > 0){
 
 		littleTextH = shortTextConstArray['height'];
