@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^contact/', 'psychomino.views.contact'),
     url(r'^rasterizer/', 'psychomino.views.rasterizer'),
     url(r'^(?P<pk>\d+)$', 'psychomino.views.home'),
+    url(r'^exportsvg/', 'psychomino.views.exportsvg'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^getSvg/', 'psychomino.views.getSvg'),
 

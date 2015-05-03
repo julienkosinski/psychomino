@@ -123,6 +123,10 @@
 		    </p>
 		    <p>Copyright 2015</p>
 		</footer>
+        <form id="svgform" method="post" action="{% url "psychomino.views.exportsvg" %}">{% csrf_token %}
+            <input type="hidden" id="output_format" name="output_format" value="">
+            <input type="hidden" id="data" name="data" value="">
+        </form>
         <script type="text/javascript" src="static/lib/jquery/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="static/js/arbre/app.js"></script>
         <script type="text/javascript" src="static/js/arbre/generation.js"></script>

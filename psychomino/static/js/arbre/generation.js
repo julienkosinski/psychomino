@@ -13,6 +13,7 @@ var	svgY = 0;
 
 var elementsResizeWrap = 0;
 var elementsCentralAlign = 0;
+var elementsCentralResizeWrap = 0;
 
 $('.generate button').on('click', function(){
 	generateDocuments($(this).val());
@@ -74,7 +75,7 @@ function generateDocuments(documentType){
 
 		littleTextH = shortTextConstArray['height'];
 		littleTextW = shortTextConstArray['width'];
-		svg = generateTextBlocs(littleTexts, fileW, fileH, littleTextW, littleTextH, svg);
+		svg = generateSmallTextBlocs(littleTexts, fileW, fileH, littleTextW, littleTextH, svg);
 		
 	}
 
@@ -82,7 +83,7 @@ function generateDocuments(documentType){
 		document.body.appendChild(svg);
 	}
 
-	actionsBeforeHide();
+	actionsBeforeHide(documentType);
 }
 
 function testPlacementBloc(fileW, fileH, elemW, elemH)
@@ -180,7 +181,6 @@ function generateBranchBlocs(contents, fileW, fileH, elemW, elemH, svg)
 		textArea.setAttribute('x', svgX);
 		textArea.setAttribute('y', svgY);
 		textArea.setAttribute('font-size', '14pts');
-		textArea.setAttribute('stroke', 'black');
 		textArea.textContent = contents[key];
 		svg.appendChild(textArea);
 
@@ -219,7 +219,6 @@ function generateTextBlocs(contents, fileW, fileH, elemW, elemH, svg)
 		textArea.setAttribute('x', svgX);
 		textArea.setAttribute('y', svgY);
 		textArea.setAttribute('font-size', '12pts');
-		textArea.setAttribute('stroke', 'black');
 		textArea.textContent = contents[key];
 		svg.appendChild(textArea);
 
@@ -229,21 +228,80 @@ function generateTextBlocs(contents, fileW, fileH, elemW, elemH, svg)
 	return svg;
 }
 
-function actionsBeforeHide()
+function generateSmallTextBlocs(contents, fileW, fileH, elemW, elemH, svg)
+{
+	for(var key in contents){
+		if(testPlacementBloc(fileW, fileH, elemW, elemH) == false){
+			document.body.appendChild(svg);
+			svgId = svgId + 1;
+			var svg = document.createElementNS(svgNS, "svg");
+			svg.setAttribute('id', 'svg-'+svgId);
+			svg.setAttribute('width', fileW);
+			svg.setAttribute('height', fileH);
+		}
+		rect = document.createElementNS(svgNS, "rect");
+		rect.setAttribute('width', elemW);
+		rect.setAttribute('height', elemH);
+		rect.setAttribute('fill', 'white');
+		rect.setAttribute('stroke', 'black');
+		rect.setAttribute('stroke-width', '1');
+		rect.setAttribute('x', svgX);
+		rect.setAttribute('y', svgY);
+		rect.setAttribute('class','shape');
+		svg.appendChild(rect);
+
+		textArea = document.createElementNS(svgNS,"text");
+		textArea.setAttribute('id','rectSmallResize-'+elementsCentralResizeWrap);
+		elementsCentralResizeWrap = elementsCentralResizeWrap + 1;
+		textArea.setAttribute('class','wrap');
+		textArea.setAttribute('x', svgX);
+		textArea.setAttribute('y', svgY);
+		textArea.setAttribute('font-size', '12pts');
+		textArea.textContent = contents[key];
+		svg.appendChild(textArea);
+
+		svgX = svgX + elemW;
+	}
+	resetPosition(elemH);
+	return svg;
+}
+
+
+function actionsBeforeHide(output_format)
 {
 	for (var i = 0; i < elementsResizeWrap; i++) {
 		d3plus.textwrap()
-	    .container(d3.select("#rectResize-"+i)).resize(true)
+	    .container(d3.select("#rectResize-"+i)).resize(true).valign("middle")
 	    .draw();
 	};
 
 	for (var i = 0; i < elementsCentralAlign; i++) {
 		d3plus.textwrap()
-	    .container(d3.select("#rectAlign-"+i)).resize(true)
+	    .container(d3.select("#rectAlign-"+i)).align("center").valign("middle")
 	    .draw();
 	};
 
+	for (var i = 0; i < elementsCentralResizeWrap; i++) {
+		d3plus.textwrap()
+	    .container(d3.select("#rectSmallResize-"+i)).resize(true).align("center").valign("middle")
+	    .draw();
+	};
+	submit_download_form(output_format);
 	$("svg").each(function(index){
 		$(this).hide();
 	})
+}
+
+function submit_download_form(output_format)
+{
+	// Get the d3js SVG element
+	var svg = document.getElementById("svg-0");
+	// Extract the data as SVG text string
+	var svg_xml = (new XMLSerializer).serializeToString(svg);
+	// Submit the <FORM> to the server.
+	// The result will be an attachment file to download.
+	var form = document.getElementById("svgform");
+	form['output_format'].value = output_format;
+	form['data'].value = svg_xml ;
+	form.submit();
 }

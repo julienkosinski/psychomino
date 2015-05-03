@@ -5,6 +5,11 @@ from psychomino.forms import ContactForm
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 from django.http import Http404
+from svglib.svglib import SvgRenderer
+from reportlab.graphics import renderPDF
+from reportlab.graphics import renderSVG
+from django.http import HttpResponse
+import xml.dom.minidom
 
 def init(request):
     return render(request, 'psychomino/index.html')
@@ -17,6 +22,29 @@ def rules(request):
 
 def rasterizer(request):
     return render(request, 'psychomino/rasterizer.html')
+
+def exportsvg(request):
+    output = request.POST.get("output_format")
+    svg = request.POST.get("data")
+    doc = xml.dom.minidom.parseString(svg.encode( "utf-8" ))
+    svg = doc.documentElement
+    # Create new instance of SvgRenderer class
+    svgRenderer = SvgRenderer()
+    svgRenderer.render(svg)
+    drawing = svgRenderer.finish()
+    if output=="svg" :
+        svg = renderSVG.drawToString(drawing)
+        response = HttpResponse(content_type='image/svg+xml')
+        response.write(svg)     
+        response["Content-Disposition"]= "attachment; filename=converted.svg"
+    
+    if output == "pdf" :
+        pdf = renderPDF.drawToString(drawing)
+        response = HttpResponse(content_type='application/pdf')
+        response.write(pdf)     
+        response["Content-Disposition"]= "attachment; filename=converted.pdf"
+
+    return response
 
 def contact(request):
     if request.method == 'POST':  # S'il s'agit d'une requête POST
