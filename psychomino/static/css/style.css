@@ -314,23 +314,25 @@ article div.search form input{
     width: 200px;
     height: 60px;
     margin-top: 40px;
-    padding-bottom: 30px;
+    display: inline-block;
+    margin-right: 8px;
+    margin-left: 8px;
 }
 
 .before{
     cursor: pointer;
-    position: absolute;
-    left: 2px;
+    position: relative;
+    left: 10px;
+    top: 6px;
     display: none;
     z-index: 100;
-    margin-top: 50px;    
 }
 .after{
     cursor: pointer;
-    position: absolute;
-    right: 0;
+    position: relative;
+    right: 10px;
+    top:6px;
     z-index: 100;
-    margin-top: 50px;
 }
 a.choice{
     background: #f23d5e;
@@ -339,8 +341,25 @@ a.choice{
     border-radius: 11px;
     -webkit-border-radius: 11px;
     -moz-border-radius: 11px;
-    position: absolute;
-    left: 75px;
+    position: relative;
+    top: 5px;
     cursor: pointer;
 }
 
+.inpContent
+{
+    display: block;
+    margin-top: 20px;
+    text-align:center;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.textareaContent
+{
+    resize: none;
+    display: block;
+    margin-left: 3px;
+    margin-top: 3px;
+}

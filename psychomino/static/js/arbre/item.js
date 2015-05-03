@@ -52,7 +52,7 @@ var Item = function() {
 				var inp = document.createElement("input");
 				inp.type = "text";
 				inp.value = pText;
-				inp.id = "inpContent";
+				inp.id = "inpContent" + this2.id;
 				inp.className = "valueInput";
 				div.insertBefore(inp, div.firstChild);
 				inp.focus();

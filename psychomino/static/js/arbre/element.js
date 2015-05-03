@@ -3,6 +3,7 @@ var Element = function() {
 	Item.call(this);
 	this.name = "Element";
 	this.content = "Nouvel élément";
+	this.type = null;
 	this.setId = function() {
 		var formData = new FormData();
 		formData.append('element_content','Nouvelle element');
@@ -55,9 +56,16 @@ var Element = function() {
 		img2.src = "static/img/right.png";
 		img2.alt = "right";
 		span2.appendChild(img2);
+		var br = document.createElement('br');
+		div.appendChild(br);
+		var a2 = document.createElement('a');
+		a2.className = "btn choice";
+		a2.innerHTML = "Valider";
+		div.appendChild(a2);
 
 		document.getElementById(this.parent).appendChild(div);
 		this.setContent('Image');
+		this.type = "Image";
 	};
 	this.callback = function() {
 		this.addDivNode();
@@ -86,7 +94,7 @@ var Element = function() {
 		var d = document.getElementById("deleteButton" + this.id);
 		d.addEventListener('click', function() {
 			jsPlumb.detachAllConnections(d.parentNode);
-			d.parentNode.parentNode.removeChild(d.parentNode);
+			d.parentNode.parentNode.parentNode.removeChild(d.parentNode.parentNode);
 			jsPlumb.repaintEverything();
 			var xhr = this2.getXMLHttpRequest();
 			xhr.open("DELETE", "http://" + location.host + "/elements/" + this2.id, true);
@@ -99,6 +107,81 @@ var Element = function() {
 					}
 				}
 			};
+		});
+
+		var right = document.getElementById("right" + this.id);
+		right.addEventListener('click', function() {
+			if(this2.type == "Image")
+			{
+				var e = document.getElementById("Element" + this2.id);
+				e.removeChild(document.getElementById(this2.id + "content"));
+				var input = document.createElement('input');
+				input.type = "text";
+				input.value = "Petit texte";
+				input.id = "inpContent" + this2.id;
+				input.className = "inpContent";
+				e.appendChild(input);
+				input.focus();
+				this2.type = "PetitTexte";
+				var left = document.getElementById("left" + this2.id);
+				left.style.display = "inline-block";
+				jsPlumb.repaintEverything();
+			}
+			else if(this2.type == "PetitTexte")
+			{
+				var e = document.getElementById("Element" + this2.id);
+				e.removeChild(document.getElementById("inpContent" + this2.id));
+				var textarea = document.createElement("textarea");
+				textarea.id = "textareaContent" + this2.id;
+				textarea.className = "textareaContent";
+				textarea.innerHTML = "Texte long";
+				textarea.rows = 3;
+				textarea.cols = 18;
+				e.appendChild(textarea);
+				textarea.focus();
+				var right = document.getElementById("right" + this2.id);
+				right.style.display = "none";
+				var left = document.getElementById("left" + this2.id);
+				left.style.top = "-20px";
+				jsPlumb.repaintEverything();
+				this2.type = "GrandTexte";
+			}
+		});
+
+		var left = document.getElementById("left" + this.id);
+		left.addEventListener('click', function() {
+			if(this2.type == "GrandTexte")
+			{
+				var e = document.getElementById("Element" + this2.id);
+				e.removeChild(document.getElementById("textareaContent" + this2.id));
+				var input = document.createElement('input');
+				input.type = "text";
+				input.value = "Petit texte";
+				input.id = "inpContent" + this2.id;
+				input.className = "inpContent";
+				e.appendChild(input);
+				input.focus();
+				this2.type = "PetitTexte";
+				var left = document.getElementById("left" + this2.id);
+				left.style.top = "";
+				jsPlumb.repaintEverything();
+			}
+			else if(this2.type == "PetitTexte")
+			{
+				var e = document.getElementById("Element" + this2.id);
+				e.removeChild(document.getElementById("inpContent" + this2.id));
+				var p = document.createElement("p");
+				p.id = this2.id + "content";
+				p.className = "value";
+				p.innerHTML = "Image";
+				e.appendChild(p);
+				var left = document.getElementById("left" + this2.id);
+				left.style.display = "none";
+				var right = document.getElementById('right' + this2.id);
+				right.style.display = "inline-block";
+				jsPlumb.repaintEverything();
+				this2.type = "Image";
+			}
 		});
 	};
 };
