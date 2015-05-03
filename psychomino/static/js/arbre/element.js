@@ -195,7 +195,7 @@ var Element = function() {
 				e.removeChild(inp);
 				var p = document.createElement('p');
 				p.innerHTML = text;
-				p.className = "value";
+				p.className = "value petitTexte";
 				p.id = this2.id + "content";
 				e.appendChild(p);
 			}
@@ -205,7 +205,7 @@ var Element = function() {
 				e.removeChild(textarea);
 				var p = document.createElement("p");
 				p.innerHTML = text;
-				p.className = "value";
+				p.className = "value grandTexte";
 				p.id = this2.id + "content";
 				e.appendChild(p);
 			}
