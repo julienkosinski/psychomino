@@ -243,6 +243,7 @@ article div.search form input{
 }
 .trunk{
     margin : 0 auto;
+    padding-top: 1px;
 }
 .trunk, .branch, .element{
     background: #f23d5e;
@@ -294,7 +295,7 @@ article div.search form input{
     padding: 0 7px 1px 7px;
 }
 .trunk .value, .branch .value{
-    height: 42px;
+    height: 46px;
     margin: auto 5px;
     line-height: 42px;
 }
@@ -303,7 +304,8 @@ article div.search form input{
     text-align: center;
     height:30px;
     line-height: 30px;
-    margin: 5px 5px auto 5px;
+    margin: 5px;
+    display: block;
 }
 .branchAdd, .branch-items {
     margin-top: 110px;
