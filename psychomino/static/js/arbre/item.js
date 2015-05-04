@@ -10,8 +10,6 @@ var Item = function() {
 	this.setLink = function() {
 		var source = this.name + this.id;
 		var target = this.elementParent;
-		console.log(source);
-		console.log(target);
 
 		jsPlumb.makeSource(source, {
 	    	connector: 'StateMachine',

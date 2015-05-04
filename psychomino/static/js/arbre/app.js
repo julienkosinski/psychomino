@@ -1,6 +1,6 @@
 window.onload = function() {
 
-
+  $(".image").colorbox({iframe:true, width:"50%", height:"70%"});
   var tabStr = location.href.split('/');
   if(!(/^[0-9]+$/.test(tabStr[3])))
   {
@@ -162,23 +162,8 @@ window.onload = function() {
                 p.className = "value grandTexte";
                 document.getElementById(element.name + element.id).appendChild(p);
               }
-              var d = document.getElementById("deleteButton" + element.id);
-              d.addEventListener('click', function() {
-                jsPlumb.detachAllConnections(d.parentNode);
-                d.parentNode.parentNode.parentNode.removeChild(d.parentNode.parentNode);
-                jsPlumb.repaintEverything();
-                var xhr = element.getXMLHttpRequest();
-                xhr.open("DELETE", "http://" + location.host + "/elements/" + element.id, true);
-                xhr.setRequestHeader('Accept', 'application/json');
-                xhr.send();
-                xhr.onreadystatechange = function() {
-                  if(xhr.readyState == 4) {
-                    if(xhr.status != 204) {
-                      alert('Impossible de supprimer l\'element !');
-                    }
-                  }
-                };
-              });
+
+              element.addEventsDelete();
 
               element.addEvents(document.getElementById(element.name + element.id));
               element.setLink();

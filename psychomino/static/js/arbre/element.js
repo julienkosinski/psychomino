@@ -97,7 +97,7 @@ var Element = function() {
 			}
 		}
 	};
-	this.addEventsButtons = function() {
+	this.addEventsDelete = function() {
 		var this2 = this;
 		var d = document.getElementById("deleteButton" + this.id);
 		d.addEventListener('click', function(e) {
@@ -117,7 +117,10 @@ var Element = function() {
 				}
 			};
 		});
-
+	};
+	this.addEventsButtons = function() {
+		this.addEventsDelete()
+		var this2 = this;
 		var right = document.getElementById("right" + this.id);
 		right.addEventListener('click', function() {
 			if(this2.type == "Image")
@@ -206,6 +209,7 @@ var Element = function() {
 				p.className = "value petitTexte";
 				p.id = this2.id + "content";
 				e.appendChild(p);
+				this2.sendUpdate("Petit Texte");
 			}
 			else if(this2.type == "GrandTexte") {
 				var textarea = document.getElementById("textareaContent" + this2.id);
@@ -216,12 +220,29 @@ var Element = function() {
 				p.className = "value grandTexte";
 				p.id = this2.id + "content";
 				e.appendChild(p);
+				this2.sendUpdate("Grand Texte");
+			}
+			else if(this2.type == "Image")
+			{
+				var img = document.getElementById(this2.id + "content");
+				img.parentNode.removeChild(img);
+				var p = document.createElement("p");
+				p.className = "value";
+				p.id = this2.id + "content";
+				e.appendChild(p);
+				var a = document.createElement('a');
+				a.className = "image";
+				a.href = "/rasterizer";
+				a.innerHTML = "Uploadez votre image";
+				p.appendChild(a);
+				$(".image").colorbox({iframe:true, width:"50%", height:"70%"});
 			}
 			e.parentNode.removeChild(document.getElementById("left" + this2.id));
 			e.parentNode.removeChild(document.getElementById("right" + this2.id));
 			var val = document.getElementById('validate' + this2.id);
 			val.parentNode.removeChild(val);
 			this2.addEvents(document.getElementById(this2.name + this2.id));
+			jsPlumb.repaintEverything();
 		});
 	};
 
@@ -231,7 +252,6 @@ var Element = function() {
 		{
 			if(div.addEventListener) {
 				div.addEventListener('dblclick', function() {
-					console.log("ok");
 					var p = document.getElementById(this2.id + "content");
 					var pText = p.innerHTML;
 					div.removeChild(p);

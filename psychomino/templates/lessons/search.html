@@ -23,9 +23,9 @@
                 <h1>Recherche</h1>
                 <ul>
                     {% for lesson in lessons %}
-                        <li>
+                        <a class="search-link" href="/{{lesson.id}}"><li>
                             <h2>
-                                {{ lesson.lesson_title }}
+                                {{ lesson.lesson_title }}</a>
                             </h2>
                             <ul>
                                 {% for branch in lesson.branches %}
@@ -38,7 +38,7 @@
                                     <li>Ce cours est vide</li>
                                 {%  endfor %}
                             </ul>
-                        </li>
+                        </li></a>
                     {% empty %}
                         <li>Aucun cours ne correspond à votre recherche</li>
                     {% endfor %}
