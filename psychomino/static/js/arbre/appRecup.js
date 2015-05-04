@@ -14,7 +14,7 @@ if (window.XMLHttpRequest || window.ActiveXObject) {
 	alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
 	return null;
 }
-xhr.open("POST", "http://" + location.host + "/lessons", true);
+xhr.open("GET", "http://" + location.host + "/lessons", true);
 xhr.setRequestHeader('Accept', 'application/json');
 xhr.send(formData);
 xhr.onreadystatechange = function() {

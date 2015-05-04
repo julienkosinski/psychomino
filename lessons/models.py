@@ -25,6 +25,7 @@ class Element(models.Model):
     ELEMENT_TYPE_CHOICE = (
         ('IMG', 'Image'),
         ('TEXT', 'Text'),
+        ('TXT', 'PetitTexte'),
     )
     element_type = models.CharField(max_length=4, choices=ELEMENT_TYPE_CHOICE)
     if element_type == 'IMG':

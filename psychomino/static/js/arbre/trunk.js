@@ -24,7 +24,7 @@ var Trunk = function() {
 			}
 		};
 	};
-	this.addBranch = function(id) {
+	this.addBranch = function() {
 		this.numBranch += 1;
 		var grow = document.createElement('div');
 		grow.className = "grow";
@@ -79,7 +79,7 @@ var Trunk = function() {
 		var this2 = this;
 		var a = document.getElementById("addButton" + this.id);
 		a.addEventListener('click', function() {
-			this2.addBranch(this.id);
+			this2.addBranch();
 		});
 	};
 	this.setClass = function() {

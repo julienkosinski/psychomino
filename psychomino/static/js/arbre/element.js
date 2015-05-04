@@ -76,7 +76,14 @@ var Element = function() {
 	this.sendUpdate = function(text) {
 		var formData = new FormData();
 		formData.append('element_content',text);
-		formData.append('element_type','TEXT');
+		if(this.type == "GrandTexte")
+		{
+			formData.append('element_type','TEXT');
+		}
+		else if(this.type == "PetitTexte")
+		{
+			formData.append('element_type','TXT');
+		}
 		formData.append('element_branch', this.elementParentId);
 		var xhr = this.getXMLHttpRequest();
 		xhr.open("PUT", "http://" + location.host + "/elements/" + this.id, true);
@@ -93,7 +100,8 @@ var Element = function() {
 	this.addEventsButtons = function() {
 		var this2 = this;
 		var d = document.getElementById("deleteButton" + this.id);
-		d.addEventListener('click', function() {
+		d.addEventListener('click', function(e) {
+			e.preventDefault();
 			jsPlumb.detachAllConnections(d.parentNode);
 			d.parentNode.parentNode.parentNode.removeChild(d.parentNode.parentNode);
 			jsPlumb.repaintEverything();
@@ -163,6 +171,8 @@ var Element = function() {
 				e.appendChild(input);
 				input.focus();
 				this2.type = "PetitTexte";
+				var right = document.getElementById('right' + this2.id);
+				right.style.display = "inline-block";
 				var left = document.getElementById("left" + this2.id);
 				left.style.top = "";
 				jsPlumb.repaintEverything();
@@ -178,8 +188,6 @@ var Element = function() {
 				e.appendChild(p);
 				var left = document.getElementById("left" + this2.id);
 				left.style.display = "none";
-				var right = document.getElementById('right' + this2.id);
-				right.style.display = "inline-block";
 				jsPlumb.repaintEverything();
 				this2.type = "Image";
 			}
@@ -211,13 +219,14 @@ var Element = function() {
 			}
 			e.parentNode.removeChild(document.getElementById("left" + this2.id));
 			e.parentNode.removeChild(document.getElementById("right" + this2.id));
+			var val = document.getElementById('validate' + this2.id);
+			val.parentNode.removeChild(val);
 			this2.addEvents(document.getElementById(this2.name + this2.id));
 		});
 	};
 
 	this.addEvents = function(div) {
 		var this2 = this;
-		console.log("ok2");
 		if(this.type == "PetitTexte")
 		{
 			if(div.addEventListener) {
@@ -290,7 +299,7 @@ var Element = function() {
 
 					inp.addEventListener('blur', function() {
 
-						var val = inp.innerHTML;
+						var val = inp.value;
 						var p2 = document.createElement('p');
 						p2.innerHTML = val;
 						p2.id = this2.id + "content";

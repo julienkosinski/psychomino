@@ -24,7 +24,7 @@ var Branch = function() {
 			}
 		}
 	};
-	this.addElement = function(id) {
+	this.addElement = function() {
 		
 		var element = new Element();
 		element.parent = 'content' + this.name + this.id;
@@ -86,7 +86,8 @@ var Branch = function() {
 	this.addEventsButtons = function() {
 		var this2 = this;
 		var d = document.getElementById("deleteButton" + this.id);
-		d.addEventListener('click', function() {
+		d.addEventListener('click', function(e) {
+			e.preventDefault();
 			jsPlumb.detachAllConnections(d.parentNode);
 			d.parentNode.parentNode.parentNode.removeChild(d.parentNode.parentNode);
 			jsPlumb.repaintEverything();
@@ -104,7 +105,7 @@ var Branch = function() {
 		});
 		var a = document.getElementById("addButton" + this.id);
 		a.addEventListener('click', function() {
-			this2.addElement(this.id);
+			this2.addElement();
 		});
 	};
 	this.setClass = function() {

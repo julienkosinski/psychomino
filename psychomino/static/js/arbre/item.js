@@ -42,14 +42,6 @@ var Item = function() {
 		this.setContent(this.content);
 		this.addEvents(div);
 	};
-	this.addDivNode = function() {
-
-		var div = document.createElement('div');
-		div.id = this.name + this.id;
-		document.getElementById(this.parent).appendChild(div);
-		this.setContent(this.content);
-		this.addEvents(div);
-	};
 	this.addEvents = function(div) {
 		var this2 = this;
 		if(div.addEventListener) {
@@ -137,10 +129,6 @@ var Item = function() {
 		p.id = this.id + "content";
 		p.className = "value";
 		document.getElementById(this.name + this.id).appendChild(p);
-		var a = document.createElement('a');
-		a.id = this.id + "buttonAdd";
-		a.className = "btn add branchAdd";
-
 	};
 	this.getXMLHttpRequest = function() {
 		var xhr = null;
