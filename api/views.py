@@ -6,10 +6,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer,TemplateHTMLRenderer
-import svgwrite
 from rest_framework.decorators import list_route
-import json
-from django.conf import settings
 
 class LessonViewSet(viewsets.ModelViewSet):
 
@@ -31,25 +28,7 @@ class LessonViewSet(viewsets.ModelViewSet):
         queryset = Lesson.objects.all()
         lessons = get_object_or_404(queryset, pk=pk)
         serializer = LessonSerializer(lessons)
-        
-        # If we support HTML, then we consider the client is a browser. We will gnerate a svg or pdf file to download in the browser in this case.
-
-        if request.accepted_renderer.format == 'html':
-            lesson = serializer.data
-
-            if request.QUERY_PARAMS.get('format', None) == 'pdf':
-                # Then it is a A4 PDF to generate.
-                pass
-            else:
-                # Pick every parts of blocks of texts generated in front in svg
-                self.generate_blocks_from_front()
-            svg_file = open(str(settings.PROJECT_ROOT)+'/static/test.svg', 'rb')
-            response = HttpResponse(FileWrapper(svg_file), content_type='application/svg+xml')
-            response['Content-Disposition'] = 'attachment; filename="%s"' % 'test.svg'
-            return response
-            # return Response({'lesson': lesson, 'branches': branches, 'elements': elements}, template_name='lessons/previews.html')
-        else:
-            return Response(serializer.data)
+        return Response(serializer.data)
 
     def create(self, request):
         serializer = LessonSerializer(data=request.data)
