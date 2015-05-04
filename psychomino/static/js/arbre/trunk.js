@@ -37,6 +37,12 @@ var Trunk = function() {
 		branch.setId();
 	};
 	this.callback = function() {
+		var fb = document.getElementById('fb');
+		var twit = document.getElementById('twit');
+		var google = document.getElementById('google');
+		fb.href = "http://www.facebook.com/sharer.php?u=" + location.host + "/" + this.id;
+		twit.href = "http://twitter.com/home?status=" + location.host + "/" + this.id;
+		google.href = "https://plus.google.com/share?url=" + location.host + "/" + this.id;
 		this.addDivNode();
 		this.addDivChildren();
 		this.addButtons();

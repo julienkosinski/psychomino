@@ -94,6 +94,12 @@ window.onload = function() {
           trunk.parent = "tree";
           trunk.parentId = "tree";
           trunk.id = lessonId;
+          var fb = document.getElementById('fb');
+          var twit = document.getElementById('twit');
+          var google = document.getElementById('google');
+          fb.href = "http://www.facebook.com/sharer.php?u=" + location.host + "/" + lessonId;
+          twit.href = "http://twitter.com/home?status=" + location.host + "/" + lessonId;
+          google.href = "https://plus.google.com/share?url=" + location.host + "/" + lessonId;
           trunk.content = response.lesson_title;
           trunk.addDivNode();
           trunk.addDivChildren();
