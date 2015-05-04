@@ -41,6 +41,8 @@ class Common(Configuration):
         'django_extensions',
 
         'psychomino',
+        'svglib',
+        'reportlab',
         'lessons'
     )
 
