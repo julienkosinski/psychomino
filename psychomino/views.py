@@ -29,9 +29,9 @@ def exportsvg(request):
     doc = xml.dom.minidom.parseString(svg.encode( "utf-8" ))
     svg = doc.documentElement
     # Create new instance of SvgRenderer class
-    svgRenderer = SvgRenderer()
-    svgRenderer.render(svg)
-    drawing = svgRenderer.finish()
+    svgTamp = SvgRenderer()
+    svgTamp.render(svg)
+    drawing = svgTamp.finish()
     if output=="svg" :
         svg = renderSVG.drawToString(drawing)
         response = HttpResponse(content_type='image/svg+xml')
