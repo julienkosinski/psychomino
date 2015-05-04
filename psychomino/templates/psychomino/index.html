@@ -30,7 +30,7 @@
                 <div id="tree" class="tree">
 
                 </div>
-                
+
         		<div class="share">
         			<p>Partager</p>
         			<a id="fb" href="http://www.facebook.com/sharer.php?u=URL" target="_blank">
@@ -52,7 +52,7 @@
 		    </p>
 		    <p>Copyright 2015</p>
 		</footer>
-        <form id="svgform" method="post" action="{% url "psychomino.views.exportsvg" %}">{% csrf_token %}
+        <form id="svgform" method="post" action="{% url 'psychomino.views.exportsvg' %}">{% csrf_token %}
             <input type="hidden" id="output_format" name="output_format" value="">
             <input type="hidden" id="data" name="data" value="">
         </form>
